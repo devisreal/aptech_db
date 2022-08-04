@@ -63,3 +63,9 @@ a , input, textarea{
 .material-icons.material-icons--sharp {
   font-family: 'Material Icons Sharp';
 }
+
+.login-bg{
+  background-image: url(../img/login-bg.jpg);
+  background-position: center;
+  background-size: cover;
+}
