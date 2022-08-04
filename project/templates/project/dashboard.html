@@ -8,7 +8,9 @@ Dashboard | Aptech DB
 
    <!-- Detail Cards -->
    <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-3 xs:gap-6">
-      <div class="bg-white rounded-lg hover:shadow-md transition-all p-3 flex items-center space-x-4">
+
+      {% comment %} Students {% endcomment %}
+      <a href="{% url 'students' %}" class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-opacity p-3 flex items-center space-x-4">
          <div class="bg-blue-100 w-fit p-2 pb-1 rounded-full">
             <i class="material-icons-round text-3xl text-blue-800">
                school
@@ -18,9 +20,10 @@ Dashboard | Aptech DB
             <h1 class="font-jost font-semibold text-lg m-0 p-0">08</h1>
             <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Students</p>
          </div>
-      </div>
+      </a>
 
-      <div class="bg-white rounded-lg hover:shadow-md transition-all p-3 flex items-center space-x-4">
+      {% comment %} Courses {% endcomment %}
+      <a href="{% url 'courses' %}" class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-opacity p-3 flex items-center space-x-4">
          <div class="bg-yellow-100 w-fit p-2 pb-1 rounded-full">            
             <i class="material-icons-round text-3xl text-yellow-800">
                article
@@ -30,9 +33,10 @@ Dashboard | Aptech DB
             <h1 class="font-jost font-semibold text-lg m-0 p-0">08</h1>
             <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Courses</p>
          </div>
-      </div>
+      </a>
 
-      <div class="bg-white rounded-lg hover:shadow-md transition-all p-3 flex items-center space-x-4">
+      {% comment %} Staff {% endcomment %}
+      <a href="{% url 'staffs' %}" class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-opacity p-3 flex items-center space-x-4">
          <div class="bg-red-100 w-fit p-2 pb-1 rounded-full">
             <i class="material-icons-round text-3xl text-red-800">
                groups
@@ -42,9 +46,10 @@ Dashboard | Aptech DB
             <h1 class="font-jost font-semibold text-lg m-0 p-0">08</h1>
             <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Staffs</p>
          </div>
-      </div>
+      </a>
 
-      <div class="bg-white rounded-lg hover:shadow-md transition-all p-3 flex items-center space-x-4">
+      {% comment %} Enquiries {% endcomment %}
+      <a href="{% url 'enquiries' %}" class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-opacity p-3 flex items-center space-x-4">
          <div class="bg-green-100 w-fit p-2 pb-1 rounded-full">
             <i class="material-icons-round text-3xl text-green-800">
                contact_support
@@ -54,14 +59,13 @@ Dashboard | Aptech DB
             <h1 class="font-jost font-semibold text-lg m-0 p-0">08</h1>
             <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Enquiries this month</p>
          </div>
-      </div>
+      </a>
 
    </div>
 
    <!--  -->
    <div class="grid md:grid-cols-3 gap-6 mt-12">
       <div class="p-8 bg-white rounded md:col-span-2">01</div>
-      <!-- ... -->
       <div class="p-8 bg-white rounded">09</div>
    </div>
 
