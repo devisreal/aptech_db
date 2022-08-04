@@ -80,7 +80,8 @@
    {% url 'dashboard' as dashboard %}
    {% url 'courses' as courses %}
    {% url 'students' as students %}
-   {% url 'faculty' as faculty %}
+   {% url 'staffs' as staffs %}
+   {% url 'enquiries' as enquiries %}
 
    <div class="drawer drawer-mobile ">
       <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
@@ -93,7 +94,7 @@
          <div
             class="menu p-4 overflow-y-auto w-64 bg-white text-gray-700 lg:rounded-tl-xl lg:rounded-bl-xl flex-col justify-between">
 
-            <div class=" ">
+            <div class="">
                <!-- <img src="{% static 'img/logo.png' %}" class="w-6/12 mx-auto" alt="Logo"> -->
                <h1 class="text-xl mt-3 text-aptechRed font-medium text-center ">Aptech Ota</h1>
             </div>
@@ -129,17 +130,26 @@
                   </a>
                </li>
                <li
-                  class="hover:bg-darkBlue active:bg-darkBlue hover:text-white rounded sidenav-link font-semibold {% if request.path == faculty %} bg-darkBlue text-white hover:bg-opacity-90 {% endif %}">
-                  <a href="{% url 'faculty' %}" class="active:bg-darkBlue text-md">
+                  class="hover:bg-darkBlue active:bg-darkBlue hover:text-white rounded sidenav-link font-semibold {% if request.path == staffs %} bg-darkBlue text-white hover:bg-opacity-90 {% endif %}">
+                  <a href="{% url 'staffs' %}" class="active:bg-darkBlue text-md">
                      <i class="material-icons-round text-2xl">
                         manage_accounts
                      </i>
-                     Faculty
+                     Staffs
+                  </a>
+               </li>
+               <li
+                  class="hover:bg-darkBlue active:bg-darkBlue hover:text-white rounded sidenav-link font-semibold {% if request.path == enquiries %} bg-darkBlue text-white hover:bg-opacity-90 {% endif %}">
+                  <a href="{% url 'enquiries' %}" class="active:bg-darkBlue text-md">
+                     <i class="material-icons-round text-2xl">
+                        manage_accounts
+                     </i>
+                     Enquiries
                   </a>
                </li>
             </ul>
 
-            <div class="">
+            <div class="md:-mb-3">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
                   <g id="freepik--Floor--inject-64">
                      <path id="freepik--floor--inject-64"

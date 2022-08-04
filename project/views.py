@@ -14,7 +14,8 @@ def courses(request):
 def students(request):
    return render(request, 'project/students.html')
 
-def faculty(request):
-   return render(request, 'project/faculty.html')
+def staffs(request):
+   return render(request, 'project/staffs.html')
 
-
+def enquiries(request):
+   return render(request, 'project/enquiries.html')
