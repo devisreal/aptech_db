@@ -1,26 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
 }
 
-
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
-  font-family: "Jost", sans-serif !important;
+h6,
+label {
+  font-family: "Jost", sans-serif;
 }
 
 p,
 small,
 span,
-a , input, textarea{
-  font-family: "Mulish", sans-serif !important;  
+a,
+input,
+textarea,td {
+  font-family: "Mulish", sans-serif;
 }
-
 
 .material-icons-outlined,
 .material-icons.material-icons--outlined,
@@ -40,32 +45,64 @@ a , input, textarea{
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  -webkit-font-feature-settings: 'liga';
-  -webkit-font-smoothing: antialiased;
+  --webkit-font-feature-settings: "liga";
+  --webkit-font-smoothing: antialiased;
 }
 
 .material-icons-outlined,
 .material-icons.material-icons--outlined {
-  font-family: 'Material Icons Outlined';
+  font-family: "Material Icons Outlined";
 }
 
 .material-icons-two-tone,
 .material-icons.material-icons--two-tone {
-  font-family: 'Material Icons Two Tone';
+  font-family: "Material Icons Two Tone";
 }
 
 .material-icons-round,
 .material-icons.material-icons--round {
-  font-family: 'Material Icons Round';
+  font-family: "Material Icons Round";
 }
 
 .material-icons-sharp,
 .material-icons.material-icons--sharp {
-  font-family: 'Material Icons Sharp';
+  font-family: "Material Icons Sharp";
 }
 
-.login-bg{
-  background-image: url(../img/login-bg.jpg);
-  background-position: center;
-  background-size: cover;
+.login-bg {
+  background-color: #a1a1aa;
+  background-image: linear-gradient(
+      62deg,
+      rgba(0, 0, 0, 0.3) 50%,
+      rgba(0, 0, 0, 0.3) 50%
+  ),
+  url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 20.5V18H0v-2h20v-2H0v-2h20v-2H0V8h20V6H0V4h20V2H0V0h22v20h2V0h2v20h2V0h2v20h2V0h2v20h2V0h2v20h2v2H20v-1.5zM0 20h2v20H0V20zm4 0h2v20H4V20zm4 0h2v20H8V20zm4 0h2v20h-2V20zm4 0h2v20h-2V20zm4 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2zm0 4h20v2H20v-2z' fill='%232f2e41' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+/* 
+
+
+
+*/
+.login-form{
+  background-image: url(../img/login-form.jpg); 
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }

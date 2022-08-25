@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}
+Courses | Aptech DB
+{% endblock title %}
+
+{% block content %}
+<div class="p-3 rounded-xl text-clifford bg-darkBlue text-white sticky top-0">
+   <h1 class="text-lg font-medium">Search Results</h1>
+</div>
+
+<div class="mt-5 border-b-2 w-11/12 ml-3 border-darkBlue">
+   <h1 class="text-xl">Courses</h1>
+</div>
+
+<div class="grid grid-cols-3 gap-4 p-3">
+
+   <div class="course-card max-w-sm px-4 py-3 mx-auto bg-white rounded-md shadow-md mt-3">
+
+      <div>
+         <h1 class="mt-2 text-lg font-semibold text-gray-800">AP® Psychology - Course 5: Health and
+            Behavior</h1>
+         <p class="mt-2 text-sm text-gray-600">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Odio eligendi similique exercitationem optio libero vitae accusamus cupiditate laborum eos.
+         </p>
+      </div>
+
+      <div class="flex items-center justify-between mt-4">
+         <span class="text-lg font-bold text-aptechRed">₦400</span>
+         <span class="px-3 py-1 font-medium font-jost text-xs text-white uppercase bg-darkBlue rounded-full">3
+            months</span>
+      </div>
+
+   </div>   
+   
+</div>
+
+<div class="mt-10 border-b-2 w-11/12 ml-3 border-darkBlue">
+   <h1 class="text-xl">Students</h1>
+</div>
+
+<div class="grid grid-cols-3 gap-4 p-3">
+
+   <div class="max-w-md px-3 py-4 mx-auto mt-12 bg-white rounded-lg shadow">
+      <div class="flex justify-end -mt-12">
+         <img class="object-cover w-16 h-16 border-2 border-aptechRed rounded-full" alt="avatar"
+            src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=76&q=80">
+      </div>
+
+      <a href="" class="mt-2 text-xl font-medium text-gray-800 hover:text-aptechRed md:mt-0 font-jost">
+         Student Name
+      </a>
+
+      <p class="mt-2 text-gray-600 text-md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
+         dolores deserunt ea doloremque natus error, rerum quas odio quaerat nam ex commodi hic, suscipit in a veritatis
+         pariatur minus consequuntur!</p>
+   </div>
+
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock content %}

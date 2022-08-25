@@ -2,8 +2,9 @@
 module.exports = {
   darkMode: "class",
   content: [
-    "./src/**/*.{js,jsx,ts,tsx,html,css,scss}",
-    "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}",
+    "../templates/**/*.html",
+    "../project/**/*.html",
+    "../account/**/*.html",
   ],
   theme: {
     screens: {
@@ -40,4 +41,5 @@ module.exports = {
       "7xl": "5rem",
     },
   },
+  plugins: [require("daisyui")],
 };

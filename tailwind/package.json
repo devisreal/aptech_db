@@ -1,0 +1,22 @@
+{
+  "name": "aptechdb-tailwind",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./input.css -o ../static/css/tailwind.css --watch",
+    "build": "npx tailwindcss -i ./input.css -o ../static/css/tailwind.css",
+    "format": "prettier --write \"../project/**/*.{html,css}\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.13",
+    "tailwindcss": "^3.1.4"
+  },
+  "dependencies": {
+    "daisyui": "^2.24.0"
+  }
+}

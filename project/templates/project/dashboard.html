@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}
 Dashboard | Aptech DB
 {% endblock title %}
@@ -10,7 +11,7 @@ Dashboard | Aptech DB
    <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-3 xs:gap-6">
 
       {% comment %} Students {% endcomment %}
-      <a href="{% url 'students' %}" class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-opacity p-3 flex items-center space-x-4">
+      <a href="{% url 'students' %}" class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-all p-3 flex items-center space-x-4">
          <div class="bg-blue-100 w-fit p-2 pb-1 rounded-full">
             <i class="material-icons-round text-3xl text-blue-800">
                school
@@ -23,7 +24,7 @@ Dashboard | Aptech DB
       </a>
 
       {% comment %} Courses {% endcomment %}
-      <a href="{% url 'courses' %}" class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-opacity p-3 flex items-center space-x-4">
+      <a href="{% url 'courses' %}" class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-all p-3 flex items-center space-x-4">
          <div class="bg-yellow-100 w-fit p-2 pb-1 rounded-full">            
             <i class="material-icons-round text-3xl text-yellow-800">
                article
@@ -36,7 +37,7 @@ Dashboard | Aptech DB
       </a>
 
       {% comment %} Staff {% endcomment %}
-      <a href="{% url 'staffs' %}" class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-opacity p-3 flex items-center space-x-4">
+      <a href="{% url 'staffs' %}" class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-all p-3 flex items-center space-x-4">
          <div class="bg-red-100 w-fit p-2 pb-1 rounded-full">
             <i class="material-icons-round text-3xl text-red-800">
                groups
@@ -49,10 +50,10 @@ Dashboard | Aptech DB
       </a>
 
       {% comment %} Enquiries {% endcomment %}
-      <a href="{% url 'enquiries' %}" class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-opacity p-3 flex items-center space-x-4">
+      <a href="{% url 'enquiries' %}" class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-all p-3 flex items-center space-x-4">
          <div class="bg-green-100 w-fit p-2 pb-1 rounded-full">
             <i class="material-icons-round text-3xl text-green-800">
-               contact_support
+               forum
             </i>
          </div>
          <div class="-space-y-1">
