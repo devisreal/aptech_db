@@ -41,7 +41,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
     'project',
-    'account'
+    'account',
+    'courses',
+    'enquiries',
+    'staff',
+    'students',
 ]
 
 

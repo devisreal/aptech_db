@@ -1,16 +1,32 @@
 from django.urls import path
 from . import views
+from courses import views as courses_view
+from students import views as students_view
+from staff import views as staffs_view
+from enquiries import views as enquiries_view
 from account.views import login as user_login, user_logout
 
 urlpatterns = [   
+
+   # * Authentication
    path('', user_login, name='login'),
    path('logout/', user_logout, name='logout'),
+
+   # * Dashboard
    path('dashboard/', views.dashboard, name='dashboard'),
-   path('courses/', views.courses, name='courses'),
-   path('students/', views.students, name='students'),
-   path('staffs/', views.staffs, name='staffs'),   
-   path('enquiries/', views.enquiries, name='enquiries'),
 
+   # * Courses
+   path('courses/', courses_view.courses, name='courses'),
 
+   # * Students
+   path('students/', students_view.students, name='students'),
+
+   # * Staff
+   path('staffs/', staffs_view.staffs, name='staffs'),   
+
+   # * Enquiries
+   path('enquiries/', enquiries_view.enquiries, name='enquiries'),
+
+   #* Search
    path('search/', views.search, name='search'),
 ]

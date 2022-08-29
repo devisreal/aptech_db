@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+{% block title %}
+Courses | Aptech DB
+{% endblock title %}
+
+{% block content %}
+<div class="p-3 rounded-lg text-clifford bg-darkBlue text-white">
+   <h1 class="text-lg font-medium">Courses</h1>
+</div>
+
+
+<div class="overflow-hidden overflow-x-auto border border- rounded mt-5 shadow">
+   <table class="min-w-full text-sm divide-y divide-gray-300 ">
+      <thead>
+         <tr class="bg-gray-50 font-jost text-md">
+            <th class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap"></th>
+            <th class="px-4 py-2 font-medium text-left text-gray-900 whitespace-nowrap">Name</th>
+            <th class="px-4 py-2 font-medium  text-gray-900 whitespace-nowrap">Duration</th>
+            <th class="px-4 py-2 font-medium  text-gray-900 whitespace-nowrap float-right">Price</th>
+         </tr>
+      </thead>
+
+      <tbody class="divide-y divide-gray-100 bg-white ">
+         {% for course in all_courses %}
+
+         <tr class="font-semibold">
+            <td class="px-4 py-2 text-gray-700 text-center whitespace-nowrap">
+               {{forloop.counter}}
+            </td>
+            <td class="px-4 py-2 font-medium text-gray-900 whitespace-nowrap">
+               <a href="" class="hover:text-aptechRed">
+                  {{course.name}}
+               </a>
+            </td>
+            <td class="px-4 py-2 text-gray-700 text-center whitespace-nowrap">{{course.duration}}</td>
+            <td class="px-4 py-2 text-gray-700 whitespace-nowrap float-right">
+               <span class="font-bold">₦</span> {{course.price|intcomma}}
+            </td>
+         </tr>
+
+         {% endfor %}
+      </tbody>
+   </table>
+</div>
+
+
+
+{% endblock content %}

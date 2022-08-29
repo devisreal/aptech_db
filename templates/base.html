@@ -58,7 +58,11 @@
 
             <div class="">
                <!-- <img src="{% static 'img/logo.png' %}" class="w-6/12 mx-auto" alt="Logo"> -->
-               <h1 class="text-xl mt-3 text-aptechRed font-medium text-center ">Aptech Ota</h1>
+               <h1 class="text-xl mt-3 text-aptechRed text-center ">
+                  <a href="{% url 'dashboard' %}" class="font-semibold">
+                     Aptech Ota
+                  </a>
+               </h1>
             </div>
 
             <form class="relative mt-7">
@@ -71,7 +75,7 @@
                </span>
 
                <input type="text"
-                  class="w-full text-md font-medium py-2 pl-10 pr-4 text-gray-700 bg-white border-2 rounded-md  focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
+                  class="w-full text-md font-medium py-2 pl-10 pr-4 text-gray-700 bg-white border-2 border-gray-300 rounded-md  focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
                   placeholder="Search" />
             </form>
 
@@ -177,7 +181,7 @@
       </div>
    </div>
 
-   <script src="https://unpkg.com/flowbite@1.5.2/dist/flowbite.js"></script>
+   <script src="{% static 'js/flowbite.js' %}"></script>
    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
