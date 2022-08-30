@@ -27,6 +27,10 @@ urlpatterns = [
    # * Enquiries
    path('enquiries/', enquiries_view.enquiries, name='enquiries'),
 
-   #* Search
+   # * Search
    path('search/', views.search, name='search'),
+
+   # * Admin Settings
+   path('settings/', views.admin_settings, name='admin_settings'),
+   
 ]

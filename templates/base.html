@@ -44,6 +44,7 @@
    {% url 'students' as students %}
    {% url 'staffs' as staffs %}
    {% url 'enquiries' as enquiries %}
+   {% url 'admin_settings' as admin_settings %}
 
    <div class="drawer drawer-mobile ">
       <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
@@ -156,7 +157,7 @@
                <ul class="py-1 text-sm text-gray-700 "
                   aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton">                  
                   <li>
-                     <a href="#" class="py-2 px-4 font-semibold text-gray-700 hover:bg-gray-100 flex">
+                     <a href="{% url 'admin_settings' %}" class="py-2 px-4 font-semibold text-gray-700 hover:bg-gray-100 flex {% if request.path == admin_settings %}bg-darkBlue text-white hover:bg-gray-800 {% endif %}">
                         <i class="material-icons-round ">
                            manage_accounts
                         </i>
@@ -184,6 +185,7 @@
    <script src="{% static 'js/flowbite.js' %}"></script>
    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+   {% block scripts %}{% endblock scripts %}
 </body>
 
 </html>

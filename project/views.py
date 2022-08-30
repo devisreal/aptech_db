@@ -10,3 +10,7 @@ def dashboard(request):
 @login_required
 def search(request):
    return render(request, 'project/search.html')
+
+@login_required
+def admin_settings(request):
+   return render(request, 'project/settings.html')
