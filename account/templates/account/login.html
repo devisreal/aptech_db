@@ -30,22 +30,25 @@
 </head>
 
 <body>
-   <div class="h-[100vh] w-full grid content-center text-center bg-gray-50 login-bg ">
+   {% include 'partials/messages.html' %}
+   <div class="h-[100vh] w-full grid content-center text-center bg-gray-100 login-bg">
+
 
       <div class="flex mx-auto overflow-hidden w-8/12 bg-white rounded-lg shadow ">
          <div class="hidden bg-cover lg:block lg:w-1/2 login-form">
          </div>
       
-         <form class="w-full px-6 py-16 md:px-8 lg:w-1/2 border">         
+         <form class="w-full px-6 py-16 md:px-8 lg:w-1/2 border" method="post">
+            {% csrf_token %}
             <h5 class="text-2xl text-center text-aptechRed font-jost font-medium">Welcome back!</h5>
                      
             <div class="mt-8">
                <label class="block mb-2 text-sm font-medium text-gray-600 text-left" for="LoggingEmailAddress">Email Address</label>
                <input id="LoggingEmailAddress"
                   class="block font-medium w-full px-4 py-2 text-gray-700 bg-white border-2 border-gray-500 rounded-md focus:border-darkBlue focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
-                  type="email">
+                  type="text" name="username_or_email" required>
             </div>
-      
+
             <div class="mt-4">
                <div class="flex justify-between">
                   <label class="block mb-2 text-sm font-medium text-gray-600 "
@@ -55,7 +58,7 @@
       
                <input id="loggingPassword"
                   class="block font-medium w-full px-4 py-2 text-gray-700 bg-white border-2 border-gray-500 rounded-md focus:border-darkBlue focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
-                  type="password">
+                  type="password" name="password" required>
             </div>
       
             <div class="mt-8">
