@@ -27,6 +27,27 @@ textarea,td {
   font-family: "Mulish", sans-serif;
 }
 
+
+/* clears the ‘X’ from Internet Explorer */
+input[type=search]::-ms-clear { display: none !important; width : 0 !important; height: 0 !important; }
+input[type=search]::-ms-reveal { display: none !important; width : 0 !important; height: 0 !important; }
+/* clears the ‘X’ from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none !important; }
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield !important;
+}
+
 .material-icons-outlined,
 .material-icons.material-icons--outlined,
 .material-icons-two-tone,

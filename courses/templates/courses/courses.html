@@ -58,38 +58,102 @@ Courses | Aptech DB
 </div>
 
 
-
-<!-- Put this part before </body> tag -->
 <input type="checkbox" id="add-course-modal" class="modal-toggle" />
 <div class="modal">
-   <div class="modal-box  p-3 rounded-md ">
+   <div class="modal-box  p-4 rounded-md ">
 
-      <label for="add-course-modal" class="cursor-pointer ">
-         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-            <path fill-rule="evenodd"
-               d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
-               clip-rule="evenodd" />
-         </svg>
+      <div class="flex items-center justify-between ">
+         <h3 class="font-semibold text-lg mt-3">Add Course</h3>
 
-      </label>
+         <label for="add-course-modal" class="cursor-pointer flex justify-end ">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+               <path fill-rule="evenodd"
+                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+                  clip-rule="evenodd" />
+            </svg>
+         
+         </label>
+      </div>
 
-      <h3 class="font-semibold text-lg">Add Course</h3>
 
-      <form action="" method="POST" class="mt-4">
+      <form action="{% url 'courses' %}" method="POST" class="mt-7">
+         {% csrf_token %}
          <div class="relative">
-            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-               <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
-                  viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                  class="w-5 h-5 text-gray-700">
+                  <path fill-rule="evenodd"
+                     d="M6 3a3 3 0 00-3 3v12a3 3 0 003 3h12a3 3 0 003-3V6a3 3 0 00-3-3H6zm1.5 1.5a.75.75 0 00-.75.75V16.5a.75.75 0 001.085.67L12 15.089l4.165 2.083a.75.75 0 001.085-.671V5.25a.75.75 0 00-.75-.75h-9z"
+                     clip-rule="evenodd" />
                </svg>
-            </div>
-            <input type="text" id="email-address-icon"
-               class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-               placeholder="name@flowbite.com">
+
+            </span>
+
+            <input type="text"
+               class="w-full text-md py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-md  focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
+               name="course_name"
+               placeholder="Course Name" />
+         </div>
+
+         <div class="relative mt-3">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                  class="w-5 h-5 text-gray-700">
+                  <path fill-rule="evenodd"
+                     d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 000-1.5h-3.75V6z"
+                     clip-rule="evenodd" />
+               </svg>
+            </span>
+
+            <input type="text"
+               class="w-full text-md py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-md  focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
+               name="course_duration"
+               placeholder="Course Duration" />
+         </div>
+
+         <div class="mt-3">
+            <textarea id="message" rows="5"
+               name="course_description"
+               class="w-full text-md py-2 pl-4 text-gray-700 bg-white border border-gray-300 rounded-md  focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
+               placeholder="Course Description"></textarea>
+
+         </div>
+
+         <div class="relative mt-3 mb-7">
+            <span class="absolute inset-y-0 left-0 flex items-center pl-3">               
+
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-gray-700">
+                  <path d="M12 7.5a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z" />
+                  <path fill-rule="evenodd"
+                     d="M1.5 4.875C1.5 3.839 2.34 3 3.375 3h17.25c1.035 0 1.875.84 1.875 1.875v9.75c0 1.036-.84 1.875-1.875 1.875H3.375A1.875 1.875 0 011.5 14.625v-9.75zM8.25 9.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM18.75 9a.75.75 0 00-.75.75v.008c0 .414.336.75.75.75h.008a.75.75 0 00.75-.75V9.75a.75.75 0 00-.75-.75h-.008zM4.5 9.75A.75.75 0 015.25 9h.008a.75.75 0 01.75.75v.008a.75.75 0 01-.75.75H5.25a.75.75 0 01-.75-.75V9.75z"
+                     clip-rule="evenodd" />
+                  <path
+                     d="M2.25 18a.75.75 0 000 1.5c5.4 0 10.63.722 15.6 2.075 1.19.324 2.4-.558 2.4-1.82V18.75a.75.75 0 00-.75-.75H2.25z" />
+               </svg>
+
+            </span>
+
+            <input type="number"
+               class="w-full text-md py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-md  focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
+               name="course_price"
+               placeholder="Course Price" />
+         </div>
+
+         <div class="w-fit ml-auto">
+            <button type="submit"
+               class="text-sm flex items-center font-jost px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-darkBlue rounded hover:bg-gray-800 focus:outline-none focus:bg-gray-600">
+
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                  <path fill-rule="evenodd"
+                     d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z"
+                     clip-rule="evenodd" />
+               </svg>
+
+
+               <span class="ml-2">Add Course</span>
+            </button>
          </div>
       </form>
-
 
    </div>
 </div>
