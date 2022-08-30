@@ -5,6 +5,10 @@ module.exports = {
     "../templates/**/*.html",
     "../project/**/*.html",
     "../account/**/*.html",
+    "../courses/**/*.html",
+    "../enquiries/**/*.html",
+    "../staff/**/*.html",
+    "../students/**/*.html",
   ],
   theme: {
     screens: {
