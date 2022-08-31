@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from . import models
+from .forms import EditCourseForm
+
 
 @login_required
 def courses(request):
@@ -37,4 +39,25 @@ def delete_course(request, id):
    course = models.Courses.objects.get(id=id)
    course.delete()
    messages.success(request, 'Course Deleted!')
-   return redirect(request.META.get('HTTP_REFERER'))
+   return redirect('courses')
+
+
+@login_required
+def course_detail(request, id):
+   course = models.Courses.objects.get(id=id)
+   if request.method == "POST":
+      edit_course_form = EditCourseForm(request.POST, instance=course)
+      if edit_course_form.is_valid():
+         edit_course_form.save()
+         messages.success(request, 'Course updated!')
+         return redirect('course_detail', id=id)
+      else:
+         pass
+   else:
+      edit_course_form = EditCourseForm(instance=course)
+
+   context = {
+      'course': course,
+      'edit_course_form': edit_course_form
+   }   
+   return render(request, 'courses/course_detail.html', context)

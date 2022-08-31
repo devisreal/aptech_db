@@ -44,7 +44,7 @@ Courses | Aptech DB
                {{forloop.counter}}
             </td>
             <td class="px-2 py-2 font-medium text-gray-900 whitespace-nowrap">
-               <a href="" class="hover:text-aptechRed">
+               <a href="{% url 'course_detail' course.id %}" class="hover:text-aptechRed">
                   {{course.name}}
                </a>
             </td>
@@ -83,7 +83,7 @@ Courses | Aptech DB
                   </label>
 
                   <div class="p-6 text-center">
-                     <svg aria-hidden="true" class="mx-auto mb-4 w-12 h-12 text-gray-400" fill="none"
+                     <svg aria-hidden="true" class="mx-auto mb-4 w-12 h-12 text-red-600" fill="none"
                         stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
@@ -107,9 +107,7 @@ Courses | Aptech DB
    </table>
 </div>
 
-
-
-<!-- Add Form Modal -->
+<!-- ? Add Course Modal -->
 <input type="checkbox" id="add-course-modal" class="modal-toggle" />
 <div class="modal">
    <div class="modal-box  p-4 rounded-md ">
@@ -142,7 +140,7 @@ Courses | Aptech DB
 
             <input type="text"
                class="w-full text-md py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-md  focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
-               name="course_name" placeholder="Course Name" />
+               name="course_name" placeholder="Course Name" required />
          </div>
 
          <div class="relative mt-3">
@@ -157,7 +155,7 @@ Courses | Aptech DB
 
             <input type="text"
                class="w-full text-md py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-md  focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
-               name="course_duration" placeholder="Course Duration" />
+               name="course_duration" placeholder="Course Duration" required />
          </div>
 
          <div class="mt-3">
@@ -184,7 +182,7 @@ Courses | Aptech DB
 
             <input type="number"
                class="w-full text-md py-2 pl-10 pr-4 text-gray-700 bg-white border border-gray-300 rounded-md  focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
-               name="course_price" placeholder="Course Price" />
+               name="course_price" placeholder="Course Price" required/>
          </div>
 
          <div class="w-fit ml-auto">
@@ -205,10 +203,6 @@ Courses | Aptech DB
 
    </div>
 </div>
-
-
-
-
 
 {% endblock content %}
 {% block scripts %}
