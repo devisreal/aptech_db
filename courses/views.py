@@ -30,3 +30,11 @@ def courses(request):
       'all_courses': all_courses
    }
    return render(request, 'courses/courses.html', context)
+
+
+@login_required
+def delete_course(request, id):
+   course = models.Courses.objects.get(id=id)
+   course.delete()
+   messages.success(request, 'Course Deleted!')
+   return redirect(request.META.get('HTTP_REFERER'))
