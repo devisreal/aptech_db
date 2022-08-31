@@ -1,5 +1,6 @@
 from django.db import models
 from courses.models import Courses
+from django.template.defaultfilters import slugify
 
 class Student(models.Model):
    gender_choices =  (      
@@ -7,7 +8,7 @@ class Student(models.Model):
       ('Female', 'Female'),
       ('Other', 'Other'),      
    )
-   studentId = models.CharField(max_length=20)
+   studentId = models.CharField(max_length=20, blank=True)
    first_name = models.CharField(max_length=200)
    middle_name = models.CharField(max_length=200, blank=True)
    last_name = models.CharField(max_length=200)
@@ -20,10 +21,15 @@ class Student(models.Model):
    guardians_contact_no = models.CharField(max_length=14, blank=True)
    courses = models.ManyToManyField(Courses)
    completed_programs = models.BooleanField(default=False, blank=True)
+   slug = models.SlugField(null=True, blank=True)
 
    def __str__(self):
       return f'{self.first_name} {self.last_name}'
    
+   def save(self, *args, **kwargs):
+      self.slug = slugify(f'{self.first_name}-{self.last_name}')
+      super().save(*args, **kwargs)
+
    class Meta:
       verbose_name = 'Student'
       verbose_name_plural = 'Students'
