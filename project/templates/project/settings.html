@@ -1,11 +1,57 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block title %}
 Settings | Aptech DB
 {% endblock title %}
 
 {% block content %}
-<div class="p-3 rounded-lg text-clifford bg-darkBlue text-white">
-   <h1 class="text-lg font-medium">Settings</h1>
+<div class="">
+   <div class="p-3 rounded-lg text-clifford bg-darkBlue text-white">
+      <h1 class="text-lg font-medium">Settings</h1>
+   </div>
+   <div class="p-3 setting_cards_wrapper bg-white rounded-lg mt-3">
+
+      <div class="text-center setting_card px-3">
+         <img src="{% static 'img/user-placeholder.jpg' %}" alt="" class="rounded-full w-48 h-48 mx-auto">
+         <p class="text-2xl text-gray-900">Chinedu Daniel</p>
+         <p class="text-md text-gray-500">chinedu-daniel@gmail.com</p>
+         <div class="mt-3">
+            <a href="#" class="rounded-full bg-darkBlue text-white mt-3 px-6 py-2 text capitalize"><span>Edit Profile</span> <ion-icon name="create"></ion-icon></a>
+         </div>
+      </div>
+
+      <div class="setting_card p-3">
+         <a class="w-full flex justify-between p-3 border border-gray-100 rounded-md">
+            <span>Change Password</span> <ion-icon name="key" style="font-size: 20px;"></ion-icon>
+         </a>
+         <a class="w-full flex justify-between p-3 border border-gray-100 rounded-md mt-3">
+            <span>Change Password</span> <ion-icon name="key" style="font-size: 20px;"></ion-icon>
+         </a>
+         <a class="w-full flex justify-between p-3 border border-gray-100 rounded-md mt-3">
+            <span>Change Password</span> <ion-icon name="key" style="font-size: 20px;"></ion-icon>
+         </a>
+      </div>
+
+   </div>
 </div>
+
+
+<style>
+   .setting_cards_wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+   }
+
+   .setting_card {
+      width: 50%;
+   }
+
+   @media screen and (max-width: 767px) {
+      .setting_card {
+         width: 100%;
+      }
+   }
+</style>
 {% endblock content %}
