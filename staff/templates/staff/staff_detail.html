@@ -7,7 +7,7 @@ Faculty | Aptech DB
 {% endblock title %}
 
 {% block content %}
-<div class="p-3 rounded-lg text-clifford bg-darkBlue text-white">
+<div class="p-3 rounded-lg  bg-darkBlue text-white">
    <h1 class="text-lg font-medium">Staff: {{staff.name}}</h1>
 </div>
 
@@ -17,12 +17,9 @@ Faculty | Aptech DB
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
    <div class="w-full order-last md:order-none px-4 py-3 bg-white rounded-md shadow-md dark:bg-gray-800">
 
-      <div class="flex justify-end">         
-         <img 
-            class="object-cover w-20  rounded-full ring-gray-300 pointer-events-none"
-            src="{% static 'img/default_avatar.png' %}" 
-            alt="Default Image"
-         >         
+      <div class="flex justify-end">
+         <img class="object-cover w-20  rounded-full ring-gray-300 pointer-events-none"
+            src="{% static 'img/default_avatar.png' %}" alt="Default Image">
       </div>
 
       <h1 class="mt-3 text-lg font-medium text-gray-800 dark:text-white">
@@ -43,10 +40,10 @@ Faculty | Aptech DB
 
       <h1 class="mt-2 mb-3 text-lg font-medium text-gray-800 dark:text-white">
          Date employed: <span class="text-md">{{staff.date_employed|naturalday}}</span>
-      </h1>         
+      </h1>
 
    </div>
-   
+
    <!-- ... -->
    <div class="bg-white p-3 grid place-content-center rounded-md shadow-md">
       <div class="flex space-x-3">
@@ -80,9 +77,7 @@ Faculty | Aptech DB
    </div>
 </div>
 
-
-
-<!-- ? Add Staff Modal -->
+<!-- ? Edit Staff Modal -->
 <input type="checkbox" id="edit-staff-modal" class="modal-toggle" />
 <div class="modal">
    <div class="modal-box relative p-3 rounded-md ">
@@ -96,7 +91,7 @@ Faculty | Aptech DB
       <h3 class="text-lg font-medium">Edit staff details</h3>
 
       <form action="" method="POST" class="mt-6">
-         {% csrf_token %}                  
+         {% csrf_token %}
 
          <!-- ? Name -->
          <label for="name" class="block mb-2 text-md font-normal text-gray-900">Staff Name</label>
@@ -179,7 +174,7 @@ Faculty | Aptech DB
          <div class="w-fit ml-auto mt-4">
             <button type="submit"
                class="text-sm flex items-center font-jost px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-green-600 rounded hover:bg-opacity-70 focus:outline-none focus:bg-green-600">
-            
+
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
                   <path fill-rule="evenodd"
                      d="M10.5 3.75a6 6 0 00-5.98 6.496A5.25 5.25 0 006.75 20.25H18a4.5 4.5 0 002.206-8.423 3.75 3.75 0 00-4.133-4.303A6.001 6.001 0 0010.5 3.75zm2.03 5.47a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l1.72-1.72v4.94a.75.75 0 001.5 0v-4.94l1.72 1.72a.75.75 0 101.06-1.06l-3-3z"
@@ -187,19 +182,13 @@ Faculty | Aptech DB
                </svg>
                <span class="ml-2">Update Staff</span>
             </button>
-            
+
          </div>
       </form>
    </div>
 </div>
 
-<!-- 
 
-
-
-
-   
- -->
 
 <!-- ? Delete Course Modal -->
 <input type="checkbox" id="delete-modal" class="modal-toggle" />

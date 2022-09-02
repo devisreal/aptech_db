@@ -22,7 +22,11 @@ urlpatterns = [
 
    # * Students
    path('students/', students_view.students, name='students'),
-   path('student/new/', students_view.register_student, name='new_student'),
+   path('student/<slug:slug>/', students_view.student_detail, name='student_detail'),
+   path('student/<slug:slug>/update/', students_view.update_student, name='update_student'),
+   path('student/<slug:slug>/program_completed/', students_view.set_program_completed, name='program_completed'),
+   path('student/<slug:slug>/delete/', students_view.delete_student, name='delete_student'),
+   path('students/new/', students_view.register_student, name='new_student'),
 
    # * Staff
    path('staffs/', staffs_view.staffs, name='staffs'),   

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from . import models
 from django.contrib import messages
@@ -35,7 +35,13 @@ def staffs(request):
    return render(request, 'staff/staffs.html', context)
 
 def staff_detail(request, slug):
-   staff = get_object_or_404(models.Staff, slug=slug)
+
+   try:
+      staff = models.Staff.objects.get(slug=slug)
+   except models.Staff.DoesNotExist:
+      messages.error(request, f"Staff '{slug}' does not exist")
+      return redirect('staffs')
+   
    if request.method == "POST":
       edit_staff_form = EditStaffForm(request.POST, instance=staff)
       if edit_staff_form.is_valid():
@@ -53,7 +59,11 @@ def staff_detail(request, slug):
    return render(request, 'staff/staff_detail.html', context)
 
 def delete_staff(request, slug):
-   staff = get_object_or_404(models.Staff, slug=slug)
+   try:
+      staff = models.Staff.objects.get(slug=slug)
+   except models.Staff.DoesNotExist:
+      messages.error(request, f"Staff '{slug}' does not exist")
+      return redirect('staffs')
    staff.delete()
-   messages.success(request, 'Course Deleted!')
+   messages.success(request, 'Staff Deleted!')
    return redirect('staffs')

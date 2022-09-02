@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from . import models
@@ -35,8 +35,12 @@ def courses(request):
 
 
 @login_required
-def delete_course(request, id):
-   course = get_object_or_404(models.Courses, id=id)
+def delete_course(request, id):   
+   try:
+      course = models.Courses.objects.get(id=id)
+   except models.Courses.DoesNotExist:
+      messages.error(request, f"Course does not exist")
+      return redirect('courses')
    course.delete()
    messages.success(request, 'Course Deleted!')
    return redirect('courses')
@@ -44,7 +48,11 @@ def delete_course(request, id):
 
 @login_required
 def course_detail(request, id):
-   course = get_object_or_404(models.Courses, id=id)
+   try:
+      course = models.Courses.objects.get(id=id)
+   except models.Courses.DoesNotExist:
+      messages.error(request, f"Course does not exist")
+      return redirect('courses')
    if request.method == "POST":
       edit_course_form = EditCourseForm(request.POST, instance=course)
       if edit_course_form.is_valid():

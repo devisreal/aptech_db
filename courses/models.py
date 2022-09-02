@@ -4,7 +4,7 @@ class Courses(models.Model):
    name = models.CharField(max_length=300)
    duration = models.CharField(max_length=20)
    description = models.TextField(blank=True)
-   price = models.PositiveBigIntegerField(blank=True)
+   price = models.PositiveBigIntegerField(blank=True)   
 
    def __str__(self):
       return self.name

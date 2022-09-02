@@ -28,7 +28,7 @@ class Student(models.Model):
       return f'{self.first_name} {self.last_name}'
    
    def save(self, *args, **kwargs):
-      self.slug = slugify(f'{self.first_name}-{self.last_name}')
+      self.slug = slugify(f'{self.last_name}-{self.first_name}')
       super().save(*args, **kwargs)
 
    class Meta:

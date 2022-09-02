@@ -110,8 +110,7 @@ class AddStudentForm(forms.ModelForm):
       required=False,
       widget=forms.TextInput(
          attrs={
-            "placeholder": "+234...", 
-            "value": "+234", 
+            "placeholder": "+234...",             
             "class": "border placeholder:font-normal font-semibold mt-1 mb-3 border-gray-300 text-gray-900 text-md rounded-lg focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring block w-full pl-3 p-2.5",
             "id": "contact_no",
             "maxlength": 14
@@ -150,8 +149,7 @@ class AddStudentForm(forms.ModelForm):
       required=False,
       widget=forms.TextInput(
          attrs={
-            "placeholder": "+234...", 
-            "value": "+234", 
+            "placeholder": "+234...",             
             "class": "border placeholder:font-normal font-semibold mt-1 mb-3 border-gray-300 text-gray-900 text-md rounded-lg focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring block w-full pl-3 p-2.5",
             "id": "guardians_contact_no",
             "maxlength": 14
