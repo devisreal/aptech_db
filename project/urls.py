@@ -25,6 +25,8 @@ urlpatterns = [
 
    # * Staff
    path('staffs/', staffs_view.staffs, name='staffs'),   
+   path('staff/<slug:slug>/', staffs_view.staff_detail, name="staff_detail"),
+   path('staff/<slug:slug>/delete/', staffs_view.delete_staff, name="delete_staff"),
 
    # * Enquiries
    path('enquiries/', enquiries_view.enquiries, name='enquiries'),

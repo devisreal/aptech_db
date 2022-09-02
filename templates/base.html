@@ -67,7 +67,8 @@
                </h1>
             </div>
 
-            <form class="relative mt-7">
+            <form action="{% url 'search' %}" method="GET" class="relative mt-7">
+               
                <span class="absolute inset-y-0 left-0 flex items-center pl-3">
                   <svg class="w-5 h-5 text-gray-700" viewBox="0 0 24 24" fill="none">
                      <path
@@ -76,9 +77,12 @@
                   </svg>
                </span>
 
-               <input type="text"
+               <input 
+                  type="text"
+                  name="key"
                   class="w-full text-md font-medium py-2 pl-10 pr-4 text-gray-700 bg-white border-2 border-gray-300 rounded-md  focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring"
-                  placeholder="Search" />
+                  placeholder="Search" 
+               />
             </form>
 
             <ul class="space-y-1 mt-7">
@@ -135,7 +139,7 @@
                class="flex items-center text-md mt-auto mb-2 pr-5 font-medium font-jost text-gray-900 rounded-full md:mr-0 ring-2 ring-gray-500"
                type="button">
                <img class="mr-2 w-10 h-10 rounded-full"
-                  src="https://media.istockphoto.com/photos/girl-with-headphones-and-neon-lighting-stylized-3d-character-picture-id1330874201?b=1&k=20&m=1330874201&s=170667a&w=0&h=GL7X6kheNB4ip-Mw8B0aI3KbUfWCzRthJqCNv5qq2jg="
+                  src="{% static 'img/default_avatar.png' %}"
                   alt="user photo">
                <span class="ml-auto"></span>{{request.user.username}}
                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mx-1.5" aria-hidden="true" fill="currentColor"
@@ -184,6 +188,7 @@
    </div>
 
    <script src="{% static 'js/flowbite.js' %}"></script>
+   <script src="{% static 'js/datepicker.js' %}"></script>
    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
    {% block scripts %}{% endblock scripts %}

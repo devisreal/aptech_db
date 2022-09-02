@@ -13,53 +13,57 @@ Dashboard | Aptech DB
    <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-4 gap-3 xs:gap-6">
 
       {% comment %} Students {% endcomment %}
-      <a href="{% url 'students' %}" class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-all p-3 flex items-center space-x-4">
+      <a href="{% url 'students' %}"
+         class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-all p-3 flex items-center space-x-4">
          <div class="bg-blue-100 w-fit p-2 pb-1 rounded-full">
             <i class="material-icons-round text-3xl text-blue-800">
                school
             </i>
          </div>
          <div class="-space-y-1">
-            <h1 class="font-jost font-semibold text-lg m-0 p-0">08</h1>
+            <h1 class="font-jost font-semibold text-lg m-0 p-0">{{students_count}}</h1>
             <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Students</p>
          </div>
       </a>
 
       {% comment %} Courses {% endcomment %}
-      <a href="{% url 'courses' %}" class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-all p-3 flex items-center space-x-4">
-         <div class="bg-yellow-100 w-fit p-2 pb-1 rounded-full">            
+      <a href="{% url 'courses' %}"
+         class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-all p-3 flex items-center space-x-4">
+         <div class="bg-yellow-100 w-fit p-2 pb-1 rounded-full">
             <i class="material-icons-round text-3xl text-yellow-800">
                article
             </i>
          </div>
          <div class="-space-y-1">
-            <h1 class="font-jost font-semibold text-lg m-0 p-0">08</h1>
+            <h1 class="font-jost font-semibold text-lg m-0 p-0">{{courses_count}}</h1>
             <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Courses</p>
          </div>
       </a>
 
       {% comment %} Staff {% endcomment %}
-      <a href="{% url 'staffs' %}" class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-all p-3 flex items-center space-x-4">
+      <a href="{% url 'staffs' %}"
+         class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-all p-3 flex items-center space-x-4">
          <div class="bg-red-100 w-fit p-2 pb-1 rounded-full">
             <i class="material-icons-round text-3xl text-red-800">
                groups
             </i>
          </div>
          <div class="-space-y-1">
-            <h1 class="font-jost font-semibold text-lg m-0 p-0">08</h1>
+            <h1 class="font-jost font-semibold text-lg m-0 p-0">{{staff_count}}</h1>
             <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Staffs</p>
          </div>
       </a>
 
       {% comment %} Enquiries {% endcomment %}
-      <a href="{% url 'enquiries' %}" class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-all p-3 flex items-center space-x-4">
+      <a href="{% url 'enquiries' %}"
+         class="bg-white rounded-lg hover:shadow-md hover:-translate-y-0.5 transition-all p-3 flex items-center space-x-4">
          <div class="bg-green-100 w-fit p-2 pb-1 rounded-full">
             <i class="material-icons-round text-3xl text-green-800">
                forum
             </i>
          </div>
          <div class="-space-y-1">
-            <h1 class="font-jost font-semibold text-lg m-0 p-0">08</h1>
+            <h1 class="font-jost font-semibold text-lg m-0 p-0">{{month_enquiries}}</h1>
             <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Enquiries this month</p>
          </div>
       </a>

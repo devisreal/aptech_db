@@ -1,11 +1,206 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load tailwind_filters %}
 {% block title %}
 Faculty | Aptech DB
 {% endblock title %}
 
 {% block content %}
 <div class="p-3 rounded-lg text-clifford bg-darkBlue text-white">
-   <h1 class="text-lg font-medium">Faculty</h1>
+   <h1 class="text-lg font-medium">Staffs</h1>
+</div>
+
+{% include 'partials/messages.html' %}
+
+<div class="flex mt-3 justify-end">
+   <label for="add-staff-modal"
+      class=" modal-button flex w-fit cursor-pointer text-md items-center px-4 py-2 font-semibold border-2 text-aptechRed bg-white rounded-md">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+         class="w-5 h-5 mx-1">
+         <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+
+      <span class="mx-1">Add Staff</span>
+   </label>
+</div>
+
+{% if all_staffs %}
+
+<section class="bg-white mt-5 rounded-lg shadow">
+   <div class="container px-4 py-5 mx-auto">
+
+      <div class="grid grid-cols-1 gap-8 mt-2 xl:mt-16 md:grid-cols-3">
+
+         {% for staff in all_staffs %}
+         <div class="flex flex-col items-center p-8 border rounded-lg">
+            <img 
+               class="object-cover w-20 h rounded-full ring-2 ring-gray-300 pointer-events-none"
+               src="{% static 'img/default_avatar.png' %}" 
+               alt="Default Image"
+            >
+
+            <a href="{% url 'staff_detail' staff.slug %}" class="mt-4 text-xl font-medium text-gray-700 capitalize font-jost hover:text-aptechRed">
+               {{staff.name}}
+            </a>
+
+            <p class="mt-2 text-gray-500 text-md capitalize ">
+               {{staff.role}}
+            </p>
+
+         </div>
+         {% endfor %}
+
+      </div>
+      
+   </div>
+</section>
+
+{% else %}
+
+<div class="p-6 text-center bg-white shadow mt-6 w-5/6 mx-auto">
+   <svg aria-hidden="true" class="mx-auto mb-4 w-12 h-12 text-yellow-500" fill="none" stroke="currentColor"
+      viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+         d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+   </svg>
+   <h3 class="text-lg font-medium text-gray-500 ">
+      No Registered Staff !
+   </h3>
+</div>
+
+{% endif %}
+
+
+
+<!-- * Add Staff Modal -->
+<input type="checkbox" id="add-staff-modal" class="modal-toggle" />
+<div class="modal">
+   <div class="modal-box relative p-3 rounded-md ">
+      <label for="add-staff-modal" class="btn btn-sm btn-circle absolute right-2 top-2">
+         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+         </svg>
+
+      </label>
+      <h3 class="text-lg font-medium">Register staff!</h3>
+
+      <form action="{% url 'staffs' %}" method="POST" class="mt-6">
+         {% csrf_token %}
+         
+         <!-- ? Name -->
+         <label for="name" class="block mb-2 text-md font-normal text-gray-900">Staff Name</label>
+         <div class="relative mb-3">
+            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">               
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="w-5 h-5 text-gray-500">
+                  <path fill-rule="evenodd"
+                     d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
+                     clip-rule="evenodd" />
+               </svg>
+            </div>            
+            <input 
+               type="text" 
+               id="name"
+               name="staff_name"
+               class=" border border-gray-300 text-gray-900 text-md rounded-lg focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring block w-full pl-10 p-2.5"
+               placeholder="John Doe"
+            >
+         </div>
+         
+         <!-- ? Contact No -->
+         <label for="name" class="block mt-4 mb-2 text-md font-normal text-gray-900">Staff Contact Number</label>
+         <div class="relative mb-3">
+            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">               
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-gray-500">
+                  <path fill-rule="evenodd"
+                     d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
+                     clip-rule="evenodd" />
+               </svg>
+
+            </div>
+            <input 
+               type="text" 
+               id="contact_no" 
+               name="contact_no"
+               maxlength="14"
+               class=" border border-gray-300 text-gray-900 text-md rounded-lg focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring block w-full pl-10 p-2.5"
+               value="+234"
+               placeholder="+234..."
+            >
+         </div>
+
+         <!-- ? Email -->
+         <label for="email" class="block mt-4 mb-2 text-md font-normal text-gray-900">Staff Email</label>
+         <div class="relative mb-3">
+            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">               
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-gray-500"">
+                  <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                  <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
+               </svg>
+            </div>
+            <input 
+               type="email" 
+               id="email" 
+               name="email"
+               class=" border border-gray-300 text-gray-900 text-md rounded-lg focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring block w-full pl-10 p-2.5"
+               placeholder="johndoe@email.com"
+            >
+         </div>
+
+         <!-- ? Role -->
+         <label for="name" class="block mt-4 mb-2 text-md font-normal text-gray-900">Staff Role</label>
+         <div class="relative mb-3">
+            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">                              
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 text-gray-500"">
+                  <path
+                     d="M17.004 10.407c.138.435-.216.842-.672.842h-3.465a.75.75 0 01-.65-.375l-1.732-3c-.229-.396-.053-.907.393-1.004a5.252 5.252 0 016.126 3.537zM8.12 8.464c.307-.338.838-.235 1.066.16l1.732 3a.75.75 0 010 .75l-1.732 3.001c-.229.396-.76.498-1.067.16A5.231 5.231 0 016.75 12c0-1.362.519-2.603 1.37-3.536zM10.878 17.13c-.447-.097-.623-.608-.394-1.003l1.733-3.003a.75.75 0 01.65-.375h3.465c.457 0 .81.408.672.843a5.252 5.252 0 01-6.126 3.538z" />
+                  <path fill-rule="evenodd"
+                     d="M21 12.75a.75.75 0 000-1.5h-.783a8.22 8.22 0 00-.237-1.357l.734-.267a.75.75 0 10-.513-1.41l-.735.268a8.24 8.24 0 00-.689-1.191l.6-.504a.75.75 0 10-.964-1.149l-.6.504a8.3 8.3 0 00-1.054-.885l.391-.678a.75.75 0 10-1.299-.75l-.39.677a8.188 8.188 0 00-1.295-.471l.136-.77a.75.75 0 00-1.477-.26l-.136.77a8.364 8.364 0 00-1.377 0l-.136-.77a.75.75 0 10-1.477.26l.136.77c-.448.121-.88.28-1.294.47l-.39-.676a.75.75 0 00-1.3.75l.392.678a8.29 8.29 0 00-1.054.885l-.6-.504a.75.75 0 00-.965 1.149l.6.503a8.243 8.243 0 00-.689 1.192L3.8 8.217a.75.75 0 10-.513 1.41l.735.267a8.222 8.222 0 00-.238 1.355h-.783a.75.75 0 000 1.5h.783c.042.464.122.917.238 1.356l-.735.268a.75.75 0 10.513 1.41l.735-.268c.197.417.428.816.69 1.192l-.6.504a.75.75 0 10.963 1.149l.601-.505c.326.323.679.62 1.054.885l-.392.68a.75.75 0 101.3.75l.39-.679c.414.192.847.35 1.294.471l-.136.771a.75.75 0 101.477.26l.137-.772a8.376 8.376 0 001.376 0l.136.773a.75.75 0 101.477-.26l-.136-.772a8.19 8.19 0 001.294-.47l.391.677a.75.75 0 101.3-.75l-.393-.679a8.282 8.282 0 001.054-.885l.601.504a.75.75 0 10.964-1.15l-.6-.503a8.24 8.24 0 00.69-1.191l.735.268a.75.75 0 10.512-1.41l-.734-.268c.115-.438.195-.892.237-1.356h.784zm-2.657-3.06a6.744 6.744 0 00-1.19-2.053 6.784 6.784 0 00-1.82-1.51A6.704 6.704 0 0012 5.25a6.801 6.801 0 00-1.225.111 6.7 6.7 0 00-2.15.792 6.784 6.784 0 00-2.952 3.489.758.758 0 01-.036.099A6.74 6.74 0 005.251 12a6.739 6.739 0 003.355 5.835l.01.006.01.005a6.706 6.706 0 002.203.802c.007 0 .014.002.021.004a6.792 6.792 0 002.301 0l.022-.004a6.707 6.707 0 002.228-.816 6.781 6.781 0 001.762-1.483l.009-.01.009-.012a6.744 6.744 0 001.18-2.064c.253-.708.39-1.47.39-2.264a6.74 6.74 0 00-.408-2.308z"
+                     clip-rule="evenodd" />
+               </svg>
+            </div>            
+            <input 
+               type="text" 
+               id="role"
+               name="role"
+               class=" border border-gray-300 text-gray-900 text-md rounded-lg focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring block w-full pl-10 p-2.5"
+               placeholder="John Doe"
+            >
+         </div>
+
+         <!-- ? Date employed -->
+         <label for="name" class="block mt-4 mb-2 text-md font-normal text-gray-900">Date employed</label>
+         <div class="relative">
+            <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+               <svg aria-hidden="true" class="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                     d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                     clip-rule="evenodd"></path>
+               </svg>
+            </div>
+            <input                
+               type="date"
+               class="border border-gray-300 text-gray-900 sm:text-md rounded-lg focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring block w-full pl-10 p-2.5  datepicker-input"
+               placeholder="Date enrolled"
+               name="date_employed"
+            >
+         </div>
+
+         <div class="w-fit ml-auto mt-4">
+            <button type="submit"
+               class="text-sm flex items-center font-jost px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-darkBlue rounded hover:bg-gray-800 focus:outline-none focus:bg-gray-600">
+
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                  <path fill-rule="evenodd"
+                     d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z"
+                     clip-rule="evenodd" />
+               </svg>
+
+               <span class="ml-2">Add Staff</span>
+            </button>
+         </div>
+      </form>
+   </div>
 </div>
 {% endblock content %}

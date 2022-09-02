@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from . import models
@@ -15,7 +15,7 @@ def courses(request):
       course_description = request.POST['course_description']
       course_price = request.POST['course_price']
 
-      if not course_name and course_duration and course_description and course_price:
+      if not course_name and course_duration and course_price:
          messages.error(request, 'Enter complete details !')
       else:
          new_course = models.Courses(
@@ -36,7 +36,7 @@ def courses(request):
 
 @login_required
 def delete_course(request, id):
-   course = models.Courses.objects.get(id=id)
+   course = get_object_or_404(models.Courses, id=id)
    course.delete()
    messages.success(request, 'Course Deleted!')
    return redirect('courses')
@@ -44,7 +44,7 @@ def delete_course(request, id):
 
 @login_required
 def course_detail(request, id):
-   course = models.Courses.objects.get(id=id)
+   course = get_object_or_404(models.Courses, id=id)
    if request.method == "POST":
       edit_course_form = EditCourseForm(request.POST, instance=course)
       if edit_course_form.is_valid():
@@ -52,7 +52,7 @@ def course_detail(request, id):
          messages.success(request, 'Course updated!')
          return redirect('course_detail', id=id)
       else:
-         pass
+         messages.error(request, 'An error occured, please try again')
    else:
       edit_course_form = EditCourseForm(instance=course)
 

@@ -4,12 +4,12 @@ module.exports = {
   content: [
     "../templates/**/*.html",    
     "../static/**/*.{css,js}",
-    "../project/**/*.html",
-    "../account/**/*.html",
-    "../courses/**/*.html",
-    "../enquiries/**/*.html",
-    "../staff/**/*.html",
-    "../students/**/*.html",
+    "../project/**/*.{html,py}",
+    "../account/**/*.{html,py}",
+    "../courses/**/*.{html,py}",
+    "../enquiries/**/*.{html,py}",
+    "../staff/**/*.{html,py}",
+    "../students/**/*.{html,py}",
   ],
   theme: {
     screens: {
