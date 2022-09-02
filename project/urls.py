@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from project import views
 from courses import views as courses_view
 from students import views as students_view
 from staff import views as staffs_view
@@ -22,6 +22,7 @@ urlpatterns = [
 
    # * Students
    path('students/', students_view.students, name='students'),
+   path('student/new/', students_view.register_student, name='new_student'),
 
    # * Staff
    path('staffs/', staffs_view.staffs, name='staffs'),   

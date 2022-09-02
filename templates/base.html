@@ -43,13 +43,14 @@
    {% url 'courses' as courses %}
    {% url 'course_detail' as course_detail %}
    {% url 'students' as students %}
+   {% url 'new_student' as new_student %}
    {% url 'staffs' as staffs %}
    {% url 'enquiries' as enquiries %}
    {% url 'admin_settings' as admin_settings %}
 
    <div class="drawer drawer-mobile ">
       <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content items-start bg-gray-100 p-2 lg:rounded-tr-xl lg:rounded-br-xl">
+      <div class="drawer-content items-start bg-gray-200 p-2 lg:rounded-tr-xl lg:rounded-br-xl">
          {% include 'partials/navbar.html' %}
          {% block content %}{% endblock content %}
       </div>
@@ -106,7 +107,7 @@
                   </a>
                </li>
                <li
-                  class="hover:bg-darkBlue active:bg-darkBlue hover:text-white rounded sidenav-link font-semibold {% if request.path == students %} bg-darkBlue text-white hover:bg-opacity-90 {% endif %}">
+                  class="hover:bg-darkBlue active:bg-darkBlue hover:text-white rounded sidenav-link font-semibold {% if request.path == students or request.path == new_student %} bg-darkBlue text-white hover:bg-opacity-90 {% endif %}">
                   <a href="{% url 'students' %}" class="active:bg-darkBlue text-md">
                      <i class="material-icons-round text-2xl">
                         school

@@ -7574,6 +7574,16 @@ body[dir="rtl"] .checkbox:checked,
   margin-right: 0.5rem;
 }
 
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.my-3 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
 .mt-3 {
   margin-top: 0.75rem;
 }
@@ -7680,6 +7690,10 @@ body[dir="rtl"] .checkbox:checked,
 
 .mt-40 {
   margin-top: 10rem;
+}
+
+.mt-1 {
+  margin-top: 0.25rem;
 }
 
 .block {
@@ -7886,6 +7900,10 @@ body[dir="rtl"] .checkbox:checked,
 
 .max-w-2xl {
   max-width: 42rem;
+}
+
+.max-w-xs {
+  max-width: 20rem;
 }
 
 .flex-1 {
@@ -8420,6 +8438,11 @@ body[dir="rtl"] .checkbox:checked,
 .rounded-r-lg {
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
+}
+
+.rounded-l {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
 }
 
 .rounded-tr-xl {
@@ -9517,9 +9540,9 @@ body[dir="rtl"] .checkbox:checked,
   --tw-border-opacity: 1;
 }
 
-.bg-gray-100 {
+.bg-gray-200 {
   --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
 .bg-white {
@@ -9685,6 +9708,11 @@ body[dir="rtl"] .checkbox:checked,
   background-color: hsl(var(--erc, var(--nc)) / var(--tw-bg-opacity));
 }
 
+.bg-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+}
+
 .bg-blue-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(219 234 254 / var(--tw-bg-opacity));
@@ -9740,11 +9768,6 @@ body[dir="rtl"] .checkbox:checked,
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
 
-.bg-gray-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
-}
-
 .bg-blue-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(37 99 235 / var(--tw-bg-opacity));
@@ -9755,8 +9778,18 @@ body[dir="rtl"] .checkbox:checked,
   background-color: rgb(75 85 99 / var(--tw-bg-opacity));
 }
 
+.bg-gray-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
+}
+
 .bg-white\/50 {
   background-color: rgb(255 255 255 / 0.5);
+}
+
+.bg-aptechRed {
+  --tw-bg-opacity: 1;
+  background-color: rgb(173 30 34 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-0 {
@@ -10431,6 +10464,14 @@ body[dir="rtl"] .checkbox:checked,
   padding-top: 0.5rem;
 }
 
+.pl-1 {
+  padding-left: 0.25rem;
+}
+
+.pl-0 {
+  padding-left: 0px;
+}
+
 .text-left {
   text-align: left;
 }
@@ -10445,6 +10486,10 @@ body[dir="rtl"] .checkbox:checked,
 
 .font-jost {
   font-family: Jost, sans-serif;
+}
+
+.font-mulish {
+  font-family: Mulish, sans-serif;
 }
 
 .text-xl {
@@ -11547,6 +11592,12 @@ body[dir="rtl"] .checkbox:checked,
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
 
+.backdrop-blur-md {
+  --tw-backdrop-blur: blur(12px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+          backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+
 .backdrop-opacity-0 {
   --tw-backdrop-opacity: opacity(0);
   -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
@@ -11700,6 +11751,14 @@ body[dir="rtl"] .checkbox:checked,
 
 .ease-out {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.placeholder\:font-normal::-moz-placeholder {
+  font-weight: 400;
+}
+
+.placeholder\:font-normal::placeholder {
+  font-weight: 400;
 }
 
 .table tr.hover\:hover:hover:hover th, 
@@ -12007,6 +12066,10 @@ body[dir="rtl"] .checkbox:checked,
 }
 
 @media (min-width: 475px) {
+  .xs\:w-11\/12 {
+    width: 91.666667%;
+  }
+
   .xs\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -12041,6 +12104,10 @@ body[dir="rtl"] .checkbox:checked,
 
   .md\:w-4\/12 {
     width: 33.333333%;
+  }
+
+  .md\:w-full {
+    width: 100%;
   }
 
   .md\:grid-cols-4 {
