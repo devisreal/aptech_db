@@ -7,8 +7,8 @@ Student Detail | Aptech DB
 
 {% block content %}
 
-<div class="p-3 rounded-lg  bg-darkBlue text-white">
-   <h1 class="text-lg font-medium">Student: {{student.last_name}} {{student.first_name}}</h1>
+<div class="p-3 rounded-lg  bg-darkBlue text-white sticky top-0">
+   <h1 class="text-lg font-medium"><a href="{% url 'students' %}"><ion-icon name="arrow-back" style="height: 15px !important;"></ion-icon></a> Student: {{student.last_name}} {{student.first_name}}</h1>
 </div>
 
 {% include 'partials/messages.html' %}

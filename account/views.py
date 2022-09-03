@@ -44,3 +44,22 @@ def user_logout(request):
     # messages.info(request, 'See you soon 🙂')
     # Redirect to home page
     return redirect(request.META.get('HTTP_REFERER'))
+
+
+@login_required
+def edit_profile(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        email = request.POST['email']
+        user = User.objects.get(id=request.user.id)
+        
+        if username is not None and email is not None:
+            user.username = username
+            user.email = email
+            user.save()
+            return redirect('admin_settings')
+        else:
+            messages.error(request, "Please fill in all the fields provided.")
+            return redirect('admin_settings')
+    else:
+        return redirect('admin_settings')

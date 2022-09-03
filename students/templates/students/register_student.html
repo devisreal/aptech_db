@@ -6,8 +6,8 @@ Register student | Aptech DB
 {% endblock title %}
 
 {% block content %}
-<div class="p-3 rounded-lg  bg-darkBlue text-white">
-   <h1 class="text-lg font-medium">Register new student</h1>
+<div class="p-3 rounded-lg  bg-darkBlue text-white sticky top-0">
+   <h1 class="text-lg font-medium"><a href="{% url 'students' %}"><ion-icon name="arrow-back" style="height: 15px !important;"></ion-icon></a> Register new student</h1>
 </div>
 
 {% include 'partials/messages.html' %}

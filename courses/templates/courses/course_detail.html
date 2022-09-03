@@ -7,8 +7,8 @@ Course Details | Aptech DB
 
 {% block content %}
 
-<div class="p-3 rounded-lg  bg-darkBlue text-white">
-   <h1 class="text-lg font-medium">Course: {{course.name}}</h1>
+<div class="p-3 rounded-lg  bg-darkBlue text-white sticky top-0">
+   <h1 class="text-lg font-medium"><a href="{% url 'courses' %}"><ion-icon name="arrow-back" style="height: 15px !important;"></ion-icon></a> Course: {{course.name}}</h1>
 </div>
 
 {% include 'partials/messages.html' %}
