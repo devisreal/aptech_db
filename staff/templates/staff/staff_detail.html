@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% load tailwind_filters %}
 {% block title %}
 Faculty | Aptech DB
@@ -7,83 +8,89 @@ Faculty | Aptech DB
 
 {% block content %}
 <div class="p-3 rounded-lg  bg-darkBlue text-white">
-   <h1 class="text-lg font-medium">Staffs</h1>
+   <h1 class="text-lg font-medium">Staff: {{staff.name}}</h1>
 </div>
 
 {% include 'partials/messages.html' %}
 
-<div class="flex mt-3 justify-end">
-   <label for="add-staff-modal"
-      class=" modal-button flex w-fit cursor-pointer text-md items-center px-4 py-2 font-semibold border-2 text-aptechRed bg-white rounded-md">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mx-1">
-         <path
-            d="M6.25 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM3.25 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63 13.067 13.067 0 01-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 01-.364-.63l-.001-.122zM19.75 7.5a.75.75 0 00-1.5 0v2.25H16a.75.75 0 000 1.5h2.25v2.25a.75.75 0 001.5 0v-2.25H22a.75.75 0 000-1.5h-2.25V7.5z" />
-      </svg>
 
-      <span class="mx-1">Add Staff</span>
-   </label>
-</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
+   <div class="w-full order-last md:order-none px-4 py-3 bg-white rounded-md shadow-md dark:bg-gray-800">
 
-{% if all_staffs %}
-
-<section class="bg-white mt-5 rounded-lg shadow">
-   <div class="container px-4 py-5 mx-auto">
-
-      <div class="grid grid-cols-1 gap-8 mt-2 xl:mt-16 md:grid-cols-3">
-
-         {% for staff in all_staffs %}
-         <div class="flex flex-col items-center p-8 border rounded-lg">
-            <img class="object-cover w-20 h rounded-full ring-2 ring-gray-300 pointer-events-none"
-               src="{% static 'img/default_avatar.png' %}" alt="Default Image">
-
-            <a href="{% url 'staff_detail' staff.slug %}"
-               class="mt-4 text-xl font-medium text-gray-700 capitalize font-jost hover:text-aptechRed">
-               {{staff.name}}
-            </a>
-
-            <p class="mt-2 text-gray-500 text-md capitalize ">
-               {{staff.role}}
-            </p>
-
-         </div>
-         {% endfor %}
-
+      <div class="flex justify-end">
+         <img class="object-cover w-20  rounded-full ring-gray-300 pointer-events-none"
+            src="{% static 'img/default_avatar.png' %}" alt="Default Image">
       </div>
 
+      <h1 class="mt-3 text-lg font-medium text-gray-800 dark:text-white">
+         Name: <span class="text-md">{{staff.name}}</span>
+      </h1>
+
+      <h1 class="mt-2 text-lg font-medium text-gray-800 dark:text-white">
+         Contact No: <span class="text-md">{{staff.contact_no}}</span>
+      </h1>
+
+      <h1 class="mt-2 text-lg font-medium text-gray-800 dark:text-white">
+         Email: <span class="text-md">{{staff.email}}</span>
+      </h1>
+
+      <h1 class="mt-2 text-lg font-medium text-gray-800 dark:text-white">
+         Role: <span class="text-md">{{staff.role}}</span>
+      </h1>
+
+      <h1 class="mt-2 mb-3 text-lg font-medium text-gray-800 dark:text-white">
+         Date employed: <span class="text-md">{{staff.date_employed|naturalday}}</span>
+      </h1>
+
    </div>
-</section>
 
-{% else %}
+   <!-- ... -->
+   <div class="bg-white p-3 grid place-content-center rounded-md shadow-md">
+      <div class="flex space-x-3">
 
-<div class="p-6 text-center bg-white shadow mt-6 w-5/6 mx-auto">
-   <svg aria-hidden="true" class="mx-auto mb-4 w-12 h-12 text-yellow-500" fill="none" stroke="currentColor"
-      viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-         d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-   </svg>
-   <h3 class="text-lg font-medium text-gray-500 ">
-      No Registered Staff !
-   </h3>
+         <label for="edit-staff-modal"
+            class="cursor-pointer text-sm font-semibold flex items-center font-jost px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-aptechOrange rounded hover:bg-opacity-75 focus:outline-none focus:bg-aptechOrange">
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+               <path
+                  d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
+               <path
+                  d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
+            </svg>
+
+            <span class="ml-2">Edit Staff Details</span>
+         </label>
+
+         <label for="delete-modal"
+            class="text-sm cursor-pointer modal-button font-semibold flex items-center font-jost px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red-600 rounded hover:bg-opacity-75 focus:outline-none focus:bg-red-600">
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+               <path fill-rule="evenodd"
+                  d="M16.5 4.478v.227a48.816 48.816 0 013.878.512.75.75 0 11-.256 1.478l-.209-.035-1.005 13.07a3 3 0 01-2.991 2.77H8.084a3 3 0 01-2.991-2.77L4.087 6.66l-.209.035a.75.75 0 01-.256-1.478A48.567 48.567 0 017.5 4.705v-.227c0-1.564 1.213-2.9 2.816-2.951a52.662 52.662 0 013.369 0c1.603.051 2.815 1.387 2.815 2.951zm-6.136-1.452a51.196 51.196 0 013.273 0C14.39 3.05 15 3.684 15 4.478v.113a49.488 49.488 0 00-6 0v-.113c0-.794.609-1.428 1.364-1.452zm-.355 5.945a.75.75 0 10-1.5.058l.347 9a.75.75 0 101.499-.058l-.346-9zm5.48.058a.75.75 0 10-1.498-.058l-.347 9a.75.75 0 001.5.058l.345-9z"
+                  clip-rule="evenodd" />
+            </svg>
+
+            <span class="ml-2">Delete Staff</span>
+         </label>
+
+      </div>
+   </div>
 </div>
 
-{% endif %}
-
-
-
-<!-- * Add Staff Modal -->
-<input type="checkbox" id="add-staff-modal" class="modal-toggle" />
+<!-- ? Edit Staff Modal -->
+<input type="checkbox" id="edit-staff-modal" class="modal-toggle" />
 <div class="modal">
    <div class="modal-box relative p-3 rounded-md ">
-      <label for="add-staff-modal" class="btn btn-sm btn-circle absolute right-2 top-2">
+      <label for="edit-staff-modal" class="btn btn-sm btn-circle absolute right-2 top-2">
          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
             stroke="currentColor" class="w-5 h-5">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
          </svg>
 
       </label>
-      <h3 class="text-lg font-medium">Register staff!</h3>
+      <h3 class="text-lg font-medium">Edit staff details</h3>
 
-      <form action="{% url 'staffs' %}" method="POST" class="mt-6">
+      <form action="" method="POST" class="mt-6">
          {% csrf_token %}
 
          <!-- ? Name -->
@@ -97,9 +104,7 @@ Faculty | Aptech DB
                      clip-rule="evenodd" />
                </svg>
             </div>
-            <input type="text" id="name" name="staff_name"
-               class=" border border-gray-300 text-gray-900 text-md rounded-lg focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring block w-full pl-10 p-2.5"
-               placeholder="John Doe">
+            {{edit_staff_form.name}}
          </div>
 
          <!-- ? Contact No -->
@@ -114,9 +119,7 @@ Faculty | Aptech DB
                </svg>
 
             </div>
-            <input type="text" id="contact_no" name="contact_no" maxlength="14"
-               class=" border border-gray-300 text-gray-900 text-md rounded-lg focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring block w-full pl-10 p-2.5"
-               value="+234" placeholder="+234...">
+            {{edit_staff_form.contact_no}}
          </div>
 
          <!-- ? Email -->
@@ -130,9 +133,7 @@ Faculty | Aptech DB
                   d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
                </svg>
             </div>
-            <input type="email" id="email" name="email"
-               class=" border border-gray-300 text-gray-900 text-md rounded-lg focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring block w-full pl-10 p-2.5"
-               placeholder="johndoe@email.com">
+            {{edit_staff_form.email}}
          </div>
 
          <!-- ? Role -->
@@ -153,9 +154,7 @@ Faculty | Aptech DB
                   clip-rule="evenodd" />
                </svg>
             </div>
-            <input type="text" id="role" name="role"
-               class=" border border-gray-300 text-gray-900 text-md rounded-lg focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring block w-full pl-10 p-2.5"
-               placeholder="John Doe">
+            {{edit_staff_form.role}}
          </div>
 
          <!-- ? Date employed -->
@@ -169,25 +168,61 @@ Faculty | Aptech DB
                      clip-rule="evenodd"></path>
                </svg>
             </div>
-            <input type="date"
-               class="border border-gray-300 text-gray-900 sm:text-md rounded-lg focus:border-darkBlue focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring block w-full pl-10 p-2.5  datepicker-input"
-               placeholder="Date enrolled" name="date_employed">
+            {{edit_staff_form.date_employed}}
          </div>
 
          <div class="w-fit ml-auto mt-4">
             <button type="submit"
-               class="text-sm flex items-center font-jost px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-darkBlue rounded hover:bg-gray-800 focus:outline-none focus:bg-gray-600">
+               class="text-sm flex items-center font-jost px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-green-600 rounded hover:bg-opacity-70 focus:outline-none focus:bg-green-600">
 
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
                   <path fill-rule="evenodd"
-                     d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z"
+                     d="M10.5 3.75a6 6 0 00-5.98 6.496A5.25 5.25 0 006.75 20.25H18a4.5 4.5 0 002.206-8.423 3.75 3.75 0 00-4.133-4.303A6.001 6.001 0 0010.5 3.75zm2.03 5.47a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l1.72-1.72v4.94a.75.75 0 001.5 0v-4.94l1.72 1.72a.75.75 0 101.06-1.06l-3-3z"
                      clip-rule="evenodd" />
                </svg>
-
-               <span class="ml-2">Add Staff</span>
+               <span class="ml-2">Update Staff</span>
             </button>
+
          </div>
       </form>
    </div>
 </div>
+
+
+
+<!-- ? Delete Course Modal -->
+<input type="checkbox" id="delete-modal" class="modal-toggle" />
+<label for="delete-modal" class="modal ">
+   <label class="modal-box md:w-4/12 max-w-5xl rounded-md p-0 relative" for="">
+      <div class="relative bg-white rounded-lg shadow">
+         <label for="delete-modal"
+            class="absolute cursor-pointer top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
+            data-modal-toggle="popup-modal">
+            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+               xmlns="http://www.w3.org/2000/svg">
+               <path fill-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  clip-rule="evenodd"></path>
+            </svg>
+         </label>
+
+         <div class="p-6 text-center">
+            <svg aria-hidden="true" class="mx-auto mb-4 w-12 h-12 text-red-600" fill="none" stroke="currentColor"
+               viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <h3 class="mb-5 text-md font-normal text-gray-500 ">Are you sure you want to delete this
+               staff?</h3>
+            <a href="{% url 'delete_staff' staff.slug %}"
+               class="text-white bg-red-600 hover:bg-red-800 focus:ring-2 focus:outline-none focus:ring-red-300 font-medium rounded-md text-sm inline-flex items-center px-4 py-2 text-center mr-2">
+               Yes, I'm sure
+            </a>
+            <label for="delete-modal" type="button"
+               class="cursor-pointer text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-md border border-gray-200 text-sm font-medium px-4 py-2 hover:text-gray-900 focus:z-10">No,
+               cancel</button>
+         </div>
+      </div>
+   </label>
+</label>
 {% endblock content %}

@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tailwind_filters %}
+{% block title %}
+Register student | Aptech DB
+{% endblock title %}
+
+{% block content %}
+<div class="p-3 rounded-lg  bg-darkBlue text-white">
+   <h1 class="text-lg font-medium">Register new student</h1>
+</div>
+
+{% include 'partials/messages.html' %}
+
+
+<form method="POST" action="{% url 'new_student' %}">
+   {% csrf_token %}
+   <div class="grid grid-cols-1 xs:w-11/12 md:w-full mx-auto md:grid-cols-2 gap-6 mt-6">
+      <div class="bg-white p-4 rounded-md shadow">
+         <!-- ? Student ID -->
+         <div>
+            <label for="studentId" class="block mb-2 text-base font-medium text-gray-900">Student ID</label>
+            {{add_student_form.studentId}}
+         </div>
+
+         <!-- ? Firstname -->
+         <div>
+            <label for="first_name" class="block mb-2 text-base font-medium text-gray-900">
+               Firstname
+               <span class="text-red-600">*</span>
+            </label>
+            {{add_student_form.first_name}}
+         </div>
+
+         <!-- ? Middlename -->
+         <div>
+            <label for="middle_name" class="block mb-2 text-base font-medium text-gray-900">Middlename</label>
+            {{add_student_form.middle_name}}
+         </div>
+
+         <!-- ? Lastname -->
+         <div>
+            <label for="last_name" class="block mb-2 text-base font-medium text-gray-900">
+               Lastname
+               <span class="text-red-600">*</span>
+            </label>
+            {{add_student_form.last_name}}
+         </div>
+
+         <!-- ? Gender -->
+         <div>
+            <label for="gender" class="block mb-2 text-base font-medium text-gray-900">
+               Gender
+               <span class="text-red-600">*</span>
+            </label>
+            {{add_student_form.gender}}
+         </div>
+
+         <!-- ? Email -->
+         <div>
+            <label for="last_name" class="block mb-2 text-base font-medium text-gray-900">
+               Email Address
+            </label>
+            {{add_student_form.email}}
+         </div>
+
+         <!-- ? Date of birth -->
+         <div>
+            <label for="last_name" class="block mb-2 text-base font-medium text-gray-900">
+               Date of Birth
+            </label>
+            {{add_student_form.date_of_birth}}
+         </div>
+
+      </div>
+
+      <div class="bg-white p-4 rounded-md shadow">
+
+         <!-- ? Address -->
+         <div>
+            <label for="address" class="block mt-2 mb-2 text-base font-medium text-gray-900">
+               Address
+            </label>
+            {{add_student_form.address}}
+         </div>
+
+         <!-- ? Date enrolled -->
+         <div>
+            <label for="date_enrolled" class="block mb-2 text-base font-medium text-gray-900">
+               Date Enrolled
+            </label>
+            {{add_student_form.date_enrolled}}
+         </div>
+
+         <!-- ? Contact No -->
+         <div>
+            <label for="contact_no" class="block mt-2 mb-2 text-base font-medium text-gray-900">
+               Contact No
+            </label>
+            {{add_student_form.contact_no}}
+         </div>
+
+         <!-- ? Guardian's Name -->
+         <div>
+            <label for="guardians_name" class="block mb-2 text-base font-medium text-gray-900">
+               Guardian's Name
+            </label>
+            {{add_student_form.guardians_name}}
+         </div>
+
+         <!-- ? Guardian's Contact No -->
+         <div>
+            <label for="guardians_contact_no" class="block mt-2 mb-2 text-base font-medium text-gray-900">
+               Guardian's Contact No
+            </label>
+            {{add_student_form.guardians_contact_no}}
+         </div>
+
+         <!-- ? Courses -->
+         <div>
+            <label for="courses" class="block mt-2 mb-2 text-base font-medium text-gray-900">Courses</label>
+            {{add_student_form.courses}}
+         </div>
+      </div>
+   </div>
+
+   <div class="flex justify-center mt-10">
+      <button type="submit"
+         class="text-sm flex items-center font-jost px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-darkBlue rounded hover:bg-gray-800 focus:outline-none focus:bg-gray-600">
+
+         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+            <path fill-rule="evenodd"
+               d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z"
+               clip-rule="evenodd" />
+         </svg>
+
+         <span class="ml-2">Register Student</span>
+      </button>
+   </div>
+</form>
+<br>
+{% endblock content %}

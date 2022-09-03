@@ -7,7 +7,7 @@ Course Details | Aptech DB
 
 {% block content %}
 
-<div class="p-3 rounded-lg text-clifford bg-darkBlue text-white">
+<div class="p-3 rounded-lg  bg-darkBlue text-white">
    <h1 class="text-lg font-medium">Course: {{course.name}}</h1>
 </div>
 
@@ -16,24 +16,24 @@ Course Details | Aptech DB
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-10">
    <div class="w-full order-last md:order-none px-4 py-3 bg-white rounded-md shadow-md dark:bg-gray-800">
-      
+
       <div>
          <h1 class="mt-2 text-lg font-semibold text-gray-800 dark:text-white">
             {{course.name}}
          </h1>
 
          {% if course.description %}
-            <p class="mt-4 text-sm text-gray-600 dark:text-gray-300">
-               {{course.description}}
-            </p>
+         <p class="mt-4 text-sm text-gray-600 dark:text-gray-300">
+            {{course.description}}
+         </p>
          {% else %}
-            <p class="mt-4 text-sm text-gray-600 dark:text-gray-300">
-               No description yet!
-            </p>
+         <p class="mt-4 text-sm text-gray-600 dark:text-gray-300">
+            No description yet!
+         </p>
          {% endif %}
-         
+
       </div>
-   
+
       <div class="flex items-center justify-between mt-6">
          <span class="text-lg font-bold text-aptechRed">₦{{course.price |intcomma}}</span>
          <span class="px-3 py-1 font-medium font-jost text-xs text-white uppercase bg-darkBlue rounded-full">
@@ -42,25 +42,23 @@ Course Details | Aptech DB
       </div>
    </div>
    <!-- ... -->
-   <div class="bg-white p-3 grid place-content-center rounded-md shadow-md" >
+   <div class="bg-white p-3 grid place-content-center rounded-md shadow-md">
       <div class="flex space-x-3">
-         
-         <label 
-            for="edit-course-modal"
+
+         <label for="edit-course-modal"
             class="cursor-pointer text-sm font-semibold flex items-center font-jost px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-aptechOrange rounded hover:bg-opacity-75 focus:outline-none focus:bg-aptechOrange">
-         
+
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
                <path
                   d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32l8.4-8.4z" />
                <path
                   d="M5.25 5.25a3 3 0 00-3 3v10.5a3 3 0 003 3h10.5a3 3 0 003-3V13.5a.75.75 0 00-1.5 0v5.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5V8.25a1.5 1.5 0 011.5-1.5h5.25a.75.75 0 000-1.5H5.25z" />
             </svg>
-         
+
             <span class="ml-2">Edit Course</span>
          </label>
 
-         <label
-            for="delete-modal"
+         <label for="delete-modal"
             class="text-sm cursor-pointer modal-button font-semibold flex items-center font-jost px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red-600 rounded hover:bg-opacity-75 focus:outline-none focus:bg-red-600">
 
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
@@ -69,11 +67,11 @@ Course Details | Aptech DB
                   clip-rule="evenodd" />
             </svg>
 
-         
+
             <span class="ml-2">Delete Course</span>
          </label>
 
-         
+
       </div>
    </div>
 </div>
@@ -104,7 +102,7 @@ Course Details | Aptech DB
 
          <div class="w-fit ml-auto mt-4">
             <button type="submit"
-               class="text-sm flex items-center font-jost px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-green-600 rounded hover:bg-opacity-70 focus:outline-none focus:bg-green-600">               
+               class="text-sm flex items-center font-jost px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-green-600 rounded hover:bg-opacity-70 focus:outline-none focus:bg-green-600">
 
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
                   <path fill-rule="evenodd"

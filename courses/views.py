@@ -15,7 +15,7 @@ def courses(request):
       course_description = request.POST['course_description']
       course_price = request.POST['course_price']
 
-      if not course_name and course_duration and course_description and course_price:
+      if not course_name and course_duration and course_price:
          messages.error(request, 'Enter complete details !')
       else:
          new_course = models.Courses(
@@ -35,8 +35,12 @@ def courses(request):
 
 
 @login_required
-def delete_course(request, id):
-   course = models.Courses.objects.get(id=id)
+def delete_course(request, id):   
+   try:
+      course = models.Courses.objects.get(id=id)
+   except models.Courses.DoesNotExist:
+      messages.error(request, f"Course does not exist")
+      return redirect('courses')
    course.delete()
    messages.success(request, 'Course Deleted!')
    return redirect('courses')
@@ -44,7 +48,11 @@ def delete_course(request, id):
 
 @login_required
 def course_detail(request, id):
-   course = models.Courses.objects.get(id=id)
+   try:
+      course = models.Courses.objects.get(id=id)
+   except models.Courses.DoesNotExist:
+      messages.error(request, f"Course does not exist")
+      return redirect('courses')
    if request.method == "POST":
       edit_course_form = EditCourseForm(request.POST, instance=course)
       if edit_course_form.is_valid():
@@ -52,7 +60,7 @@ def course_detail(request, id):
          messages.success(request, 'Course updated!')
          return redirect('course_detail', id=id)
       else:
-         pass
+         messages.error(request, 'An error occured, please try again')
    else:
       edit_course_form = EditCourseForm(instance=course)
 

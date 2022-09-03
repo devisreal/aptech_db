@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'enquiries',
     'staff',
     'students',
+    "crispy_forms",
+    "crispy_tailwind",
 ]
 
 
@@ -152,3 +154,7 @@ MESSAGE_TAGS = {
     messages.WARNING: 'warning',
     messages.INFO: 'info',
 }
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+
+CRISPY_TEMPLATE_PACK = "tailwind"
