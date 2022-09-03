@@ -9,4 +9,103 @@ Enquiries | Aptech DB
    <h1 class="text-lg font-medium">Enquiries</h1>
 </div>
 
+{% include 'partials/messages.html' %}
+<div class="flex mt-3 justify-end">
+   <a href="{% url 'new_enquiry' %}"
+      class=" modal-button flex w-fit cursor-pointer text-md items-center px-4 py-2 font-semibold border-2 text-aptechRed bg-white rounded-md">      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mx-1">
+         <path
+            d="M4.913 2.658c2.075-.27 4.19-.408 6.337-.408 2.147 0 4.262.139 6.337.408 1.922.25 3.291 1.861 3.405 3.727a4.403 4.403 0 00-1.032-.211 50.89 50.89 0 00-8.42 0c-2.358.196-4.04 2.19-4.04 4.434v4.286a4.47 4.47 0 002.433 3.984L7.28 21.53A.75.75 0 016 21v-4.03a48.527 48.527 0 01-1.087-.128C2.905 16.58 1.5 14.833 1.5 12.862V6.638c0-1.97 1.405-3.718 3.413-3.979z" />
+         <path
+            d="M15.75 7.5c-1.376 0-2.739.057-4.086.169C10.124 7.797 9 9.103 9 10.609v4.285c0 1.507 1.128 2.814 2.67 2.94 1.243.102 2.5.157 3.768.165l2.782 2.781a.75.75 0 001.28-.53v-2.39l.33-.026c1.542-.125 2.67-1.433 2.67-2.94v-4.286c0-1.505-1.125-2.811-2.664-2.94A49.392 49.392 0 0015.75 7.5z" />
+      </svg>
+
+      <span class="mx-1">Add Enquiry</span>
+   </a>
+</div>
+
+{% if all_enquiries %}
+<div class="overflow-hidden overflow-x-auto border rounded mt-5 shadow">
+   <table class="min-w-full text-sm divide-y divide-gray-300 ">
+      <thead>
+         <tr class="bg-gray-50 font-jost text-md">
+            <th class="px-0 py-2 font-medium text-gray-900 whitespace-nowrap"></th>
+            <th class="px-2 py-2 font-medium text-left text-gray-900 whitespace-nowrap">StudentID</th>
+            <th class="px-2 py-2 font-medium t text-gray-900 whitespace-nowrap">Name</th>
+            <th class="px-2 py-2 font-medium  text-gray-900 whitespace-nowrap ">Email</th>
+            <th class="px-2 py-2 font-medium  text-gray-900 whitespace-nowrap ">Contact No.</th>
+            <th class="px-2 py-2 font-medium  text-gray-900 whitespace-nowrap text-right">Date enrolled.</th>
+            <th class="px-2 py-2 font-medium  text-gray-900 whitespace-nowrap text-right float-right"></th>
+         </tr>
+      </thead>
+
+      <tbody class="divide-y divide-gray-100 bg-white ">
+         {% for enquiry in all_enquiries %}
+
+         <tr class="font-semibold">
+            <td class="px-0.5 py-2 text-gray-700 text-center whitespace-nowrap">
+               {{forloop.counter}}
+            </td>
+            <td class="px-2 py-2 font-medium text-gray-900 whitespace-nowrap">
+               <a href="{% url 'student_detail' student.slug %}" class="hover:text-aptechRed">
+                  {{student.studentId}}
+               </a>
+            </td>
+            <td class="px-2 py-2 font-medium text-gray-900 whitespace-nowrap text-center">
+               <a href="{% url 'student_detail' student.slug %}" class="hover:text-aptechRed">
+                  {{student.last_name}} {{student.first_name}}
+               </a>
+            </td>
+            <td class="px-2 py-2 text-gray-700 text-center whitespace-nowrap ">
+               {{student.email}}
+            </td>
+            <td class="px-2 py-2 text-gray-700 whitespace-nowrap text-center">
+               {{student.contact_no}}
+            </td>
+            <td class="px-2 py-2 text-gray-700 whitespace-nowrap text-right">
+               {{student.date_enrolled}}
+            </td>
+            <td class="px-2 py-2 text-gray-700 whitespace-nowrap text-right float-right">
+
+               {% if student.completed_programs %}
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                  class="w-5 h-5 text-green-600">
+                  <path fill-rule="evenodd"
+                     d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                     clip-rule="evenodd" />
+               </svg>
+               {% else %}
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                  class="w-5 h-5 text-gray-700">
+                  <path fill-rule="evenodd"
+                     d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 000-1.5h-3.75V6z"
+                     clip-rule="evenodd" />
+               </svg>
+
+               {% endif %}
+
+            </td>
+         </tr>
+
+         {% endfor %}
+      </tbody>
+   </table>
+</div>
+{% else %}
+
+<div class="p-6 text-center bg-white shadow mt-6 w-5/6 mx-auto">
+   <svg aria-hidden="true" class="mx-auto mb-4 w-12 h-12 text-yellow-500" fill="none" stroke="currentColor"
+      viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+         d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+   </svg>
+   <h3 class="text-lg font-medium text-gray-500 ">
+      No Enquiries !
+   </h3>
+</div>
+
+{% endif %}
+
+
+
 {% endblock content %}

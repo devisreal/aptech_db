@@ -51,11 +51,10 @@ class AddStudentForm(forms.ModelForm):
       )
    )
 
-   gender_choices =  [
-      ('Choose Gender', 'Choose Gender'),
+   gender_choices =  [      
       ('Male', 'Male'),
       ('Female', 'Female'),
-      ('Other', 'Other'),      
+      ('Custom', 'Custom'),
    ]
 
    gender = forms.ChoiceField(

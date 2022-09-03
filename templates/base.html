@@ -46,6 +46,7 @@
    {% url 'new_student' as new_student %}
    {% url 'staffs' as staffs %}
    {% url 'enquiries' as enquiries %}
+   {% url 'new_enquiry' as new_enquiry %}
    {% url 'admin_settings' as admin_settings %}
 
    <div class="drawer drawer-mobile ">
@@ -125,7 +126,7 @@
                   </a>
                </li>
                <li
-                  class="hover:bg-darkBlue active:bg-darkBlue hover:text-white rounded sidenav-link font-semibold {% if request.path == enquiries %} bg-darkBlue text-white hover:bg-opacity-90 {% endif %}">
+                  class="hover:bg-darkBlue active:bg-darkBlue hover:text-white rounded sidenav-link font-semibold {% if request.path == enquiries or request.path == new_enquiry  %} bg-darkBlue text-white hover:bg-opacity-90 {% endif %}">
                   <a href="{% url 'enquiries' %}" class="active:bg-darkBlue text-md">
                      <i class="material-icons-round text-2xl">
                         forum
