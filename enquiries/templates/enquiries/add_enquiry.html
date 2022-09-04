@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tailwind_filters %}
+{% block title %}
+Add Enquiry | Aptech DB
+{% endblock title %}
+
+{% block content %}
+<div class="p-3 rounded-lg  bg-darkBlue text-white">
+   <h1 class="text-lg font-medium">Add Enquiry</h1>
+</div>
+
+{% include 'partials/messages.html' %}
+
+
+<!-- {{add_enquiry_form.as_p}} -->
+
+<form method="POST" action="{% url 'new_enquiry' %}">
+   {% csrf_token %}
+   <div class="grid grid-cols-1 xs:w-11/12 md:w-full mx-auto md:grid-cols-2 gap-6 mt-6">
+      <div class="bg-white p-4 rounded-md shadow">
+         <!-- ? Enqiruy No -->
+         <div>
+            <label for="enquiry_no" class="block mb-2 text-base font-medium text-gray-900">Enquiry No</label>
+            {{add_enquiry_form.enquiry_no}}
+         </div>
+
+         <!-- ? Firstname -->
+         <div>
+            <label for="first_name" class="block mb-2 text-base font-medium text-gray-900">
+               Firstname
+               <span class="text-red-600">*</span>
+            </label>
+            {{add_enquiry_form.first_name}}
+         </div>
+
+         <!-- ? Middlename -->
+         <div>
+            <label for="middlename" class="block mb-2 text-base font-medium text-gray-900">
+               Middlename               
+            </label>
+            {{add_enquiry_form.middlename}}
+         </div>
+
+         <!-- ? Surnname -->
+         <div>
+            <label for="surn_name" class="block mb-2 text-base font-medium text-gray-900">
+               Surname
+               <span class="text-red-600">*</span>
+            </label>
+            {{add_enquiry_form.surn_name}}
+         </div>
+
+         <!-- ? Address -->
+         <div>
+            <label for="address" class="block mb-2 text-base font-medium text-gray-900">Address</label>
+            {{add_enquiry_form.address}}
+         </div>
+
+         <!-- ? Contact No -->
+         <div>
+            <label for="contact_no" class="block mb-2 text-base font-medium text-gray-900">Contact No</label>
+            {{add_enquiry_form.contact_no}}
+         </div>
+
+         <!-- ? Email -->
+         <div>
+            <label for="contact_no" class="block mb-2 text-base font-medium text-gray-900">Email Address</label>
+            {{add_enquiry_form.email}}
+         </div>
+
+         <!-- ? Date of birth -->
+         <div>
+            <label for="last_name" class="block mb-2 text-base font-medium text-gray-900">
+               Date of Birth
+            </label>
+            {{add_enquiry_form.date_of_birth}}
+         </div>
+
+         <!-- ? Guardian's Name -->
+         <div>
+            <label for="guardians_name" class="block mb-2 text-base font-medium text-gray-900">
+               Guardian's Name
+            </label>
+            {{add_enquiry_form.guardians_name}}
+         </div>
+         
+         <!-- ? Guardian's Contact No -->
+         <div>
+            <label for="guardians_contact_no" class="block mt-2 mb-2 text-base font-medium text-gray-900">
+               Guardian's Contact No
+            </label>
+            {{add_enquiry_form.guardians_contact_no}}
+         </div>
+      </div>
+
+      <div class="bg-white p-4 rounded-md shadow">                  
+
+         <!-- ? Educational Qualifications -->
+         <div>
+            <label for="educational_qualifications" class="block mt-2 mb-2 text-base font-medium text-gray-900">
+               Educational Qualifications
+            </label>
+            {{add_enquiry_form.educational_qualifications}}
+         </div>
+
+         <!-- ? Educational Others -->
+         <div>
+            <label for="educational_qualifications" class="block mt-2 mb-2 text-md font-medium text-gray-900">
+               If others please specify:
+            </label>
+            {{add_enquiry_form.eductional_others}}
+         </div>
+         
+         
+         <!-- ? How you heard list -->
+         <div>
+            <label for="educational_qualifications" class="block mt-2 mb-2 text-base font-medium text-gray-900">
+               How did you hear about us ?
+            </label>
+            {{add_enquiry_form.how_you_heard}}
+         </div>
+
+         <!-- ? How you heard others -->
+         <div>
+            <label for="educational_qualifications" class="block mt-2 mb-2 text-md font-medium text-gray-900">
+               If others please specify:
+            </label>
+            {{add_enquiry_form.how_you_heard_others}}
+         </div>
+
+         <!-- ? Course of Interest list -->
+         <div>
+            <label for="educational_qualifications" class="block mt-2 mb-2 text-base font-medium text-gray-900">
+               Course of Interest
+            </label>
+            {{add_enquiry_form.course_of_interest}}
+         </div>
+         
+         <!-- ? Course of Interest others -->
+         <div>
+            <label for="educational_qualifications" class="block mt-2 mb-2 text-md font-medium text-gray-900">
+               If others please specify:
+            </label>
+            {{add_enquiry_form.course_of_interest_others}}
+         </div>
+         
+
+         <h4 class="text-aptechRed font-medium mt-4">For Counselor's only</h4>
+
+         <!-- ? Counselor -->
+         <div>
+            <label for="educational_qualifications" class="block mt-2 mb-2 text-md font-medium text-gray-900">
+               Counselor:
+            </label>
+            {{add_enquiry_form.counselor}}
+         </div>
+
+         <!-- ? Remark -->
+         <div>
+            <label for="educational_qualifications" class="block mt-2 mb-2 text-md font-medium text-gray-900">
+               Remark:
+            </label>
+            {{add_enquiry_form.remark}}
+         </div>
+
+         <!-- ? Date -->
+         <div>
+            <label for="educational_qualifications" class="block mt-2 mb-2 text-md font-medium text-gray-900">
+               Date:
+            </label>
+            {{add_enquiry_form.date}}
+         </div>
+
+      </div>
+   </div>
+
+   <div class="flex justify-center mt-10">
+      <button type="submit"
+         class="text-sm flex items-center font-jost px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-darkBlue rounded hover:bg-gray-800 focus:outline-none focus:bg-gray-600">
+
+         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+            <path fill-rule="evenodd"
+               d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z"
+               clip-rule="evenodd" />
+         </svg>
+
+         <span class="ml-2">Add Enquiry</span>
+      </button>
+   </div>
+</form>
+<br>
+{% endblock content %}
