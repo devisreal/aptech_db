@@ -17,17 +17,63 @@ Settings | Aptech DB
          <img src="{% static 'img/user-placeholder.jpg' %}" alt="" class="rounded-full w-48 h-48 mx-auto">
          <p class="text-2xl text-gray-900 capitalize">{{request.user.username}}</p>
          <p class="text-md text-gray-500">{{request.user.email}}</p>
+
+         <!-- Edit Profile Form -->
          <div class="mt-3">
-            <a href="#" class="rounded-full bg-darkBlue text-white mt-3 px-6 py-2 text capitalize"><span>Edit Profile</span> <ion-icon name="create"></ion-icon></a>
+            
+            <label for="my-modal-3"
+               class="modal-button rounded-full bg-darkBlue text-white mt-3 px-6 py-2 text capitalize cursor-pointer">
+               <span>Edit Profile</span>
+               <ion-icon name="create"></ion-icon>
+            </label>
+
+            <input type="checkbox" id="my-modal-3" class="modal-toggle" />
+            <div class="modal">
+               <div class="modal-box relative">
+                  <label for="my-modal-3" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                  <h3 class="text-lg font-bold">Edit your profile</h3>
+
+                  <form action="{% url 'edit_profile' %}" method="post">
+                     {% csrf_token %}
+                     <!-- Username Input -->
+                     <div class="mt-8">
+                        <label class="block mb-2 text-sm font-medium text-gray-600 text-left"
+                           for="LoggingUsername">Username:</label>
+                        <input id="LoggingUsername"
+                           class="block font-medium w-full px-4 py-2 text-gray-700 bg-white border-2 border-gray-500 rounded-md focus:border-darkBlue focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
+                           type="text" name="username" required value="{{request.user.username}}">
+                     </div>
+                     <!-- Email Input -->
+                     <div class="mt-4">
+                        <label class="block mb-2 text-sm font-medium text-gray-600 text-left"
+                           for="LoggingEmailAddress">Email Address:</label>
+                        <input id="LoggingEmailAddress"
+                           class="block font-medium w-full px-4 py-2 text-gray-700 bg-white border-2 border-gray-500 rounded-md focus:border-darkBlue focus:ring-opacity-40  focus:outline-none focus:ring focus:ring-blue-300"
+                           type="text" name="email" required value="{{request.user.email}}">
+                     </div>
+                     <div class="mt-4 ml-auto">
+                        <button type="submit" class="bg-darkBlue py-2 px-5 text-white rounded-md">
+                           <ion-icon name="save"></ion-icon> Save
+                        </button>
+                     </div>
+                  </form>
+
+               </div>
+            </div>
+
          </div>
       </div>
 
       <div class="p-3">
-         <a class="w-full block p-3 border border-gray-100 rounded-md align-middle" href="{% url 'change_password' %}">
+         <label for="my-modal-3" class="w-full block p-3 border border-gray-100 rounded-md align-middle cursor-pointer">
+            <ion-icon name="create" style="font-size: 20px; margin-right: 5px;"></ion-icon> <span>Edit Your Profile</span>
+         </label>
+         <a class="w-full block p-3 border border-gray-100 rounded-md mt-3 align-middle" href="{% url 'change_password' %}">
             <ion-icon name="key" style="font-size: 20px; margin-right: 5px;"></ion-icon> <span>Change Password</span>
          </a>
          <a class="w-full block p-3 border border-gray-100 rounded-md mt-3 align-middle" href="#">
-            <ion-icon name="information-circle" style="font-size: 20px; margin-right: 5px;"></ion-icon> <span>About</span>
+            <ion-icon name="information-circle" style="font-size: 20px; margin-right: 5px;"></ion-icon>
+            <span>About</span>
          </a>
          <a class="w-full block p-3 border border-gray-100 rounded-md mt-3 align-middle" href="#">
             <ion-icon name="help-circle" style="font-size: 20px; margin-right: 5px;"></ion-icon> <span>Help</span>

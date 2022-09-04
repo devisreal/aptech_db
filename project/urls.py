@@ -4,7 +4,7 @@ from courses import views as courses_view
 from students import views as students_view
 from staff import views as staffs_view
 from enquiries import views as enquiries_view
-from account.views import login as user_login, user_logout
+from account.views import edit_profile, login as user_login, user_logout
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [   
@@ -13,6 +13,7 @@ urlpatterns = [
    path('', user_login, name='login'),
    path('logout/', user_logout, name='logout'),
    path('change_password/', auth_views.PasswordChangeView.as_view(template_name='account/change_password.html', success_url='/settings/'), name="change_password"),
+   path('edit_profile/', edit_profile, name="edit_profile"),
 
    # * Dashboard
    path('dashboard/', views.dashboard, name='dashboard'),
