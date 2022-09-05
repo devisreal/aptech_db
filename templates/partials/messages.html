@@ -1,8 +1,4 @@
 {% load static %}
-<!-- JQUERY CDN -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-    integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 {% if messages %}
 
@@ -21,42 +17,45 @@
         <!-- INFO -->
         {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
         <div class="flex items-center justify-center w-12 bg-blue-500">
-            <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM21.6667 28.3333H18.3334V25H21.6667V28.3333ZM21.6667 21.6666H18.3334V11.6666H21.6667V21.6666Z" />
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-white fill-current">
+                <path fill-rule="evenodd"
+                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 01.67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 11-.671-1.34l.041-.022zM12 9a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                    clip-rule="evenodd" />
             </svg>
+
         </div>
 
         <!-- WARNING -->
         {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
-        <div class="flex items-center justify-center w-12 bg-yellow-400">
-            <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M20 3.33331C10.8 3.33331 3.33337 10.8 3.33337 20C3.33337 29.2 10.8 36.6666 20 36.6666C29.2 36.6666 36.6667 29.2 36.6667 20C36.6667 10.8 29.2 3.33331 20 3.33331ZM21.6667 28.3333H18.3334V25H21.6667V28.3333ZM21.6667 21.6666H18.3334V11.6666H21.6667V21.6666Z" />
+        <div class="flex items-center justify-center w-12 bg-yellow-500">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-white fill-current">
+                <path fill-rule="evenodd"
+                    d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                    clip-rule="evenodd" />
             </svg>
         </div>
 
         <!-- ERROR -->
         {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
-        <div class="flex items-center justify-center w-12 bg-red-500 text-xl text-white">
-            <!-- <svg class="w-6 h-6 text-white fill-current" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <path
-            d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z" />
-    </svg> -->
-            <ion-icon name="alert-circle"></ion-icon>
+        <div class="flex items-center justify-center w-12 bg-red-500 text-xl text-white">            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-white fill-current">
+                <path fill-rule="evenodd"
+                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zM12 8.25a.75.75 0 01.75.75v3.75a.75.75 0 01-1.5 0V9a.75.75 0 01.75-.75zm0 8.25a.75.75 0 100-1.5.75.75 0 000 1.5z"
+                    clip-rule="evenodd" />
+            </svg>                    
         </div>
 
         {% endif %}
 
-
         <div class="px-4 py-2 -mx-3">
             <div class="mx-3">
                 {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
-                <span class="font-semibold text-green-500 dark:text-emerald-400">Success</span>
+                <span class="font-semibold text-green-500 ">Success</span>
                 {% elif message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
-                <span class="font-semibold text-blue-500 dark:text-blue-400">Info</span>
+                <span class="font-semibold text-blue-500 ">Info</span>
                 {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
-                <span class="font-semibold text-yellow-400 dark:text-yellow-300">Warning</span>
+                <span class="font-semibold text-yellow-500 ">Warning</span>
                 {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
                 <span class="font-semibold text-red-500">Error</span>
                 {% endif %}
@@ -70,7 +69,6 @@
 {% endfor %}
 
 {% endif %}
-
 
 <script>
 

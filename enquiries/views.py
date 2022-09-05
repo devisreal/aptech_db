@@ -15,7 +15,16 @@ def enquiries(request):
 
 
 def add_enquiry(request):
-   add_enquiry_form = AddEnquiryForm()
+   if request.method == 'POST':
+      add_enquiry_form = AddEnquiryForm(request.POST)
+      if add_enquiry_form.is_valid():
+         add_enquiry_form.save()
+         messages.success(request, 'Enquiry Added!')
+         return redirect('enquiries')
+      else:
+         messages.error(request, 'An error occured, please try again')
+   else:
+      add_enquiry_form = AddEnquiryForm()      
    context = {
       'add_enquiry_form': add_enquiry_form
    }

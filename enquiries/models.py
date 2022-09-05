@@ -48,7 +48,7 @@ class Enquires(models.Model):
 
 
    def __str__(self):
-      return self.name
+      return f"{self.first_name} {self.surn_name} on {self.date}"
 
    class Meta:
       verbose_name = 'Enquiry'

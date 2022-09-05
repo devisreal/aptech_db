@@ -6,18 +6,17 @@ Add Enquiry | Aptech DB
 {% endblock title %}
 
 {% block content %}
-<div class="p-3 rounded-lg  bg-darkBlue text-white">
+<div class="p-3 rounded-lg bg-darkBlue text-white">
    <h1 class="text-lg font-medium">Add Enquiry</h1>
 </div>
 
 {% include 'partials/messages.html' %}
 
 
-<!-- {{add_enquiry_form.as_p}} -->
 
 <form method="POST" action="{% url 'new_enquiry' %}">
    {% csrf_token %}
-   <div class="grid grid-cols-1 xs:w-11/12 md:w-full mx-auto md:grid-cols-2 gap-6 mt-6">
+   <div class="grid grid-cols-1 w-full xs:w-11/12 md:w-full mx-auto md:grid-cols-2 gap-4 mt-6">
       <div class="bg-white p-4 rounded-md shadow">
          <!-- ? Enqiruy No -->
          <div>
