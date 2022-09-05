@@ -1,6 +1,6 @@
 from django.db import models
 from multiselectfield import MultiSelectField
-
+from django.template.defaultfilters import slugify
 
 class Enquires(models.Model):
    educational_qualifications_list = (      
@@ -23,7 +23,7 @@ class Enquires(models.Model):
       ('Hardware/Networking', 'Hardware/Networking'),           
    )
 
-   enquiry_no = models.PositiveIntegerField(blank=True)
+   enquiry_no = models.PositiveIntegerField(blank=True, unique=True)
    surn_name = models.CharField(max_length=100)
    first_name = models.CharField(max_length=100)
    middlename = models.CharField(max_length=100, blank=True)
@@ -45,10 +45,14 @@ class Enquires(models.Model):
    date = models.DateField(blank=True, null=True)
    
    date_posted = models.DateTimeField(auto_now_add=True)
-
+   slug = models.SlugField(null=True, blank=True)
 
    def __str__(self):
       return f"{self.first_name} {self.surn_name} on {self.date}"
+
+   def save(self, *args, **kwargs):
+      self.slug = slugify(self.enquiry_no)
+      super().save(*args, **kwargs)
 
    class Meta:
       verbose_name = 'Enquiry'

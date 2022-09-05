@@ -10,7 +10,17 @@ Enquiries | Aptech DB
 </div>
 
 {% include 'partials/messages.html' %}
-<div class="flex mt-3 justify-end">
+<div class="flex mt-3 justify-between items-center">
+
+   <div>
+      <h1 class="text-lg font-medium shadow inline-flex items-center bg-white p-1 px-3 rounded-md">
+         <span class="text-aptechRed font-jost">
+            Total Enquiries:&nbsp;
+         </span>
+         {{enquiries_count}}
+      </h1>
+   </div>
+
    <a href="{% url 'new_enquiry' %}"
       class=" modal-button flex w-fit cursor-pointer text-md items-center px-4 py-2 font-semibold border-2 text-aptechRed bg-white rounded-md">      
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mx-1">
@@ -46,12 +56,12 @@ Enquiries | Aptech DB
                {{forloop.counter}}
             </td>
             <td class="px-2 py-2 font-medium text-gray-900 whitespace-nowrap">
-               <a href="" class="hover:text-aptechRed">
+               <a href="{% url 'enquiry_detail' enquiry.slug %}" class="hover:text-aptechRed">
                   {{enquiry.enquiry_no}}
                </a>
             </td>
             <td class="px-2 py-2 font-medium text-gray-900 whitespace-nowrap text-center">
-               <a href="" class="hover:text-aptechRed">
+               <a href="{% url 'enquiry_detail' enquiry.slug %}" class="hover:text-aptechRed">
                   {{enquiry.surn_name}} {{enquiry.first_name}}
                </a>
             </td>

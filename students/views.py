@@ -7,9 +7,11 @@ from . import models
 @login_required
 def students(request):
    all_students = models.Student.objects.all().order_by('last_name').values()
+   students_count = all_students.count()
 
    context = {
-      'all_students': all_students
+      'all_students': all_students,
+      'students_count': students_count
    }
    return render(request, 'students/students.html', context)
 

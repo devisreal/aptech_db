@@ -7,8 +7,8 @@ Dashboard | Aptech DB
 {% block content %}
 {% include 'partials/messages.html' %}
 
-<div class="p-3 rounded-lg text-clifford bg-darkBlue text-white">
-   <h1 class="text-lg font-medium">Dashboard</h1>
+<div class="p-3 rounded-lg  bg-darkBlue text-white">
+   <h1 class="text-lg font-medium">Dashboard </h1>
 </div>
 
 <div class="p-3 md:p-5">
@@ -26,9 +26,9 @@ Dashboard | Aptech DB
          <div class="-space-y-1">
             <h1 class="font-jost font-semibold text-lg m-0 p-0">{{students_count}}</h1>
             {% if students_count > 1%}
-               <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Students</p>
+            <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Students</p>
             {% else %}
-               <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Student</p>
+            <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Student</p>
             {% endif %}
          </div>
       </a>
@@ -44,9 +44,9 @@ Dashboard | Aptech DB
          <div class="-space-y-1">
             <h1 class="font-jost font-semibold text-lg m-0 p-0">{{courses_count}}</h1>
             {% if courses_count > 1 %}
-               <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Courses</p>
+            <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Courses</p>
             {% else %}
-               <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Course</p>
+            <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Course</p>
             {% endif %}
          </div>
       </a>
@@ -62,9 +62,9 @@ Dashboard | Aptech DB
          <div class="-space-y-1">
             <h1 class="font-jost font-semibold text-lg m-0 p-0">{{staff_count}}</h1>
             {% if staff.count > 1 %}
-               <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Staffs</p>
+            <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Staffs</p>
             {% else %}
-               <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Staff</p>
+            <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Staff</p>
             {% endif %}
          </div>
       </a>
@@ -80,9 +80,9 @@ Dashboard | Aptech DB
          <div class="-space-y-1">
             <h1 class="font-jost font-semibold text-lg m-0 p-0">{{month_enquiries}}</h1>
             {% if month_enquiries > 1 %}
-               <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Enquiries this month</p>
+            <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Enquiries this month</p>
             {% else %}
-               <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Enquiry this month</p>
+            <p class="m-0 p-0 text-sm text-gray-500 font-semibold">Enquiry this month</p>
             {% endif %}
          </div>
       </a>
