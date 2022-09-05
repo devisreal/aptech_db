@@ -89,13 +89,108 @@ Dashboard | Aptech DB
 
    </div>
 
-   <!--  -->
-   <div class="grid md:grid-cols-3 gap-6 mt-12">
-      <div class="p-8 bg-white rounded md:col-span-2">01</div>
-      <div class="p-8 bg-white rounded">09</div>
+   <!-- DASHBOARD CHART -->
+   <div class="bg-white rounded w-full mt-12">
+      <div>
+         <div class="p-3 items-end inline-block">
+            <div class="flex">
+               <span class="text-3xl mr-2 font-bold">{{students_this_month}}</span>
+               <small class="text-end font-medium">Students Registered<br>this Month</small>
+            </div>
+         </div>
+         <div class="p-3 items-end inline-block">
+            <div class="flex">
+               <span class="text-3xl mr-2 font-bold">{{students_this_year}}</span>
+               <small class="text-end font-medium">Students Registered<br>this Year</small>
+            </div>
+         </div>
+         <div class="p-3 items-end inline-block">
+            <div class="flex">
+               <span class="text-3xl mr-2 font-bold">{{students_last_year}}</span>
+               <small class="text-end font-medium">Students Registered<br>last Year</small>
+            </div>
+         </div>
+      </div>
+      <div class="max-w-full w-full" id="chart"></div>
+   </div>
+
+
+   <div class="hidden">
+      {% for student_enrolled in students_enrolled %}
+      <span class="enrollment_date">{{student_enrolled.date}}</span>
+      <span class="num_enrolled">{{student_enrolled.num}}</span>
+      <span class="prev_num_enrolled">{{student_enrolled.num_prev}}</span>
+      {% endfor %}
    </div>
 
 
 
+
+
 </div>
+
+
+<!-- APEX CHARTS CDN -->
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script>
+   let enrollment_date = document.getElementsByClassName("enrollment_date")
+   let num_enrolled = document.getElementsByClassName("num_enrolled")
+   let prev_num_enrolled = document.getElementsByClassName("prev_num_enrolled")
+
+   let data = []
+   let categories = []
+   let data2 = []
+
+   for (let a = 0; a < enrollment_date.length; a++) {
+      data.push(num_enrolled[a].textContent)
+      categories.push(enrollment_date[a].textContent)
+      data2.push(prev_num_enrolled[a].textContent)
+   }
+
+   var options = {
+      chart: {
+         type: 'area',
+         width: "80%",
+         height: 400,
+         zoom: {
+            enabled: false,
+         }
+      },
+      series: [
+         {
+            name: 'No of Students Enrolled This Year',
+            data: data
+         },
+         {
+            name: 'No of Students Enrolled Last Year',
+            data: data2
+         }
+      ],
+      xaxis: {
+         title: {
+            text: 'Students Enrolled per Month of the Year',
+         },
+         categories: categories
+      },
+      colors: ['#008FFB', '#F44336'],
+      fill: {
+         colors: ['#008FFB', '#F44336'],
+      },
+      responsive: [
+         {
+            breakpoint: 1000,
+            options: {
+               chart: {
+                  width: "100%"
+               }
+            }
+         }
+      ]
+   }
+
+   var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+   chart.render();
+</script>
 {% endblock content %}
