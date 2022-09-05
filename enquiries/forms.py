@@ -134,16 +134,6 @@ class AddEnquiryForm(forms.ModelForm):
       ('Vocational School', 'Vocational School'),      
    ]
 
-   educational_qualifications = forms.ChoiceField(
-      choices=educational_qualifications_list,
-      required=False,
-      widget=forms.CheckboxSelectMultiple(
-         attrs={            
-            'id': 'educational_qualifications',
-            'class': 'text-md'
-         }
-      )
-   )
 
    eductional_others = forms.CharField(
       label='', 
@@ -165,17 +155,7 @@ class AddEnquiryForm(forms.ModelForm):
       ('Friends/Relatives', 'Friends/Relatives'),
       ('Fliers/Handbills', 'Fliers/Handbills'),      
    )
-
-   how_you_heard = forms.ChoiceField(
-      choices=how_you_heard_list,
-      required=False,
-      widget=forms.CheckboxSelectMultiple(
-         attrs={            
-            'id': 'how_you_heard',
-            'class': 'text-md'
-         }
-      )
-   )
+   
 
    how_you_heard_others = forms.CharField(
       label='', 
@@ -194,17 +174,7 @@ class AddEnquiryForm(forms.ModelForm):
       ('System Engineer', 'System Engineer'),
       ('Hardware/Networking', 'Hardware/Networking'),           
    )
-
-   course_of_interest = forms.ChoiceField(
-      choices=course_of_interest_list,
-      required=False,
-      widget=forms.CheckboxSelectMultiple(
-         attrs={            
-            'id': 'course_of_interest',
-            'class': 'text-md'
-         }
-      )
-   )
+   
 
    course_of_interest_others = forms.CharField(
       label='', 

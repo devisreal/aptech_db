@@ -39,6 +39,9 @@ urlpatterns = [
    # * Enquiries
    path('enquiries/', enquiries_view.enquiries, name='enquiries'),
    path('enquiries/new/', enquiries_view.add_enquiry, name='new_enquiry'),
+   path('enquiry/<slug:slug>/', enquiries_view.enquiry_detail, name='enquiry_detail'),
+   path('enquiry/<slug:slug>/delete/', enquiries_view.delete_enquiry, name="delete_enquiry"),
+   path('enquiry/<slug:slug>/update/', enquiries_view.update_enquiry, name="update_enquiry"),
 
    # * Search
    path('search/', views.search, name='search'),

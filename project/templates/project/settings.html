@@ -8,7 +8,7 @@ Settings | Aptech DB
 {% block content %}
 
 <div class="">
-   <div class="p-3 rounded-lg text-clifford bg-darkBlue text-white">
+   <div class="p-3 rounded-lg  bg-darkBlue text-white">
       <h1 class="text-lg font-medium">Settings</h1>
    </div>
    <div class="p-3 grid grid-cols-1 md:grid-cols-2 gap-3 bg-white rounded-lg mt-3">
@@ -20,11 +20,9 @@ Settings | Aptech DB
 
          <!-- Edit Profile Form -->
          <div class="mt-5">
-            
-            <label 
-               for="my-modal-3"
-               class="modal-button rounded-full bg-darkBlue text-white mt-3 px-6 py-2 text capitalize cursor-pointer"
-            >
+
+            <label for="my-modal-3"
+               class="modal-button rounded-full bg-darkBlue text-white mt-3 px-6 py-2 text capitalize cursor-pointer">
                <span class="text-md font-medium">Edit Profile</span>
                <ion-icon name="create"></ion-icon>
             </label>
@@ -55,7 +53,7 @@ Settings | Aptech DB
                      </div>
                      <div class="mt-4 ml-auto">
                         <button type="submit" class="bg-darkBlue py-2 px-5 text-white rounded-md font-medium">
-                           <ion-icon name="save"></ion-icon> 
+                           <ion-icon name="save"></ion-icon>
                            Save
                         </button>
                      </div>
@@ -69,9 +67,11 @@ Settings | Aptech DB
 
       <div class="p-3">
          <label for="my-modal-3" class="w-full block p-3 border border-gray-100 rounded-md align-middle cursor-pointer">
-            <ion-icon name="create" style="font-size: 20px; margin-right: 5px;"></ion-icon> <span>Edit Your Profile</span>
+            <ion-icon name="create" style="font-size: 20px; margin-right: 5px;"></ion-icon> <span>Edit Your
+               Profile</span>
          </label>
-         <a class="w-full block p-3 border border-gray-100 rounded-md mt-3 align-middle" href="{% url 'change_password' %}">
+         <a class="w-full block p-3 border border-gray-100 rounded-md mt-3 align-middle"
+            href="{% url 'change_password' %}">
             <ion-icon name="key" style="font-size: 20px; margin-right: 5px;"></ion-icon> <span>Change Password</span>
          </a>
          <a class="w-full block p-3 border border-gray-100 rounded-md mt-3 align-middle" href="#">

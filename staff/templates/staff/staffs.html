@@ -12,7 +12,17 @@ Faculty | Aptech DB
 
 {% include 'partials/messages.html' %}
 
-<div class="flex mt-3 justify-end">
+<div class="flex mt-3 justify-between items-center">
+
+   <div>
+      <h1 class="text-lg font-medium shadow inline-flex items-center bg-white p-1 px-3 rounded-md">
+         <span class="text-aptechRed font-jost">
+            Total Staff:&nbsp;
+         </span>
+         {{staff_count}}
+      </h1>
+   </div>
+
    <label for="add-staff-modal"
       class=" modal-button flex w-fit cursor-pointer text-md items-center px-4 py-2 font-semibold border-2 text-aptechRed bg-white rounded-md">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mx-1">

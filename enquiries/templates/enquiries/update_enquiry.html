@@ -1,27 +1,27 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% load tailwind_filters %}
 {% block title %}
-Add Enquiry | Aptech DB
+Update Enquiry | Aptech DB
 {% endblock title %}
 
 {% block content %}
 <div class="p-3 rounded-lg bg-darkBlue text-white">
-   <h1 class="text-lg font-medium">Add Enquiry</h1>
+   <h1 class="text-lg font-medium">Update Enquiry: {{enquiry.enquiry_no}}</h1>
 </div>
 
 {% include 'partials/messages.html' %}
 
 
-
-<form method="POST" action="{% url 'new_enquiry' %}">
+<form method="POST">
    {% csrf_token %}
    <div class="grid grid-cols-1 w-full xs:w-11/12 md:w-full mx-auto md:grid-cols-2 gap-4 mt-6">
       <div class="bg-white p-4 rounded-md shadow">
          <!-- ? Enqiruy No -->
          <div>
             <label for="enquiry_no" class="block mb-2 text-base font-medium text-gray-900">Enquiry No</label>
-            {{add_enquiry_form.enquiry_no}}
+            {{edit_enquiry_form.enquiry_no}}
          </div>
 
          <!-- ? Firstname -->
@@ -30,15 +30,15 @@ Add Enquiry | Aptech DB
                Firstname
                <span class="text-red-600">*</span>
             </label>
-            {{add_enquiry_form.first_name}}
+            {{edit_enquiry_form.first_name}}
          </div>
 
          <!-- ? Middlename -->
          <div>
             <label for="middlename" class="block mb-2 text-base font-medium text-gray-900">
-               Middlename               
+               Middlename
             </label>
-            {{add_enquiry_form.middlename}}
+            {{edit_enquiry_form.middlename}}
          </div>
 
          <!-- ? Surnname -->
@@ -47,25 +47,25 @@ Add Enquiry | Aptech DB
                Surname
                <span class="text-red-600">*</span>
             </label>
-            {{add_enquiry_form.surn_name}}
+            {{edit_enquiry_form.surn_name}}
          </div>
 
          <!-- ? Address -->
          <div>
             <label for="address" class="block mb-2 text-base font-medium text-gray-900">Address</label>
-            {{add_enquiry_form.address}}
+            {{edit_enquiry_form.address}}
          </div>
 
          <!-- ? Contact No -->
          <div>
             <label for="contact_no" class="block mb-2 text-base font-medium text-gray-900">Contact No</label>
-            {{add_enquiry_form.contact_no}}
+            {{edit_enquiry_form.contact_no}}
          </div>
 
          <!-- ? Email -->
          <div>
             <label for="contact_no" class="block mb-2 text-base font-medium text-gray-900">Email Address</label>
-            {{add_enquiry_form.email}}
+            {{edit_enquiry_form.email}}
          </div>
 
          <!-- ? Date of birth -->
@@ -73,7 +73,7 @@ Add Enquiry | Aptech DB
             <label for="last_name" class="block mb-2 text-base font-medium text-gray-900">
                Date of Birth
             </label>
-            {{add_enquiry_form.date_of_birth}}
+            {{edit_enquiry_form.date_of_birth}}
          </div>
 
          <!-- ? Guardian's Name -->
@@ -81,26 +81,26 @@ Add Enquiry | Aptech DB
             <label for="guardians_name" class="block mb-2 text-base font-medium text-gray-900">
                Guardian's Name
             </label>
-            {{add_enquiry_form.guardians_name}}
+            {{edit_enquiry_form.guardians_name}}
          </div>
-         
+
          <!-- ? Guardian's Contact No -->
          <div>
             <label for="guardians_contact_no" class="block mt-2 mb-2 text-base font-medium text-gray-900">
                Guardian's Contact No
             </label>
-            {{add_enquiry_form.guardians_contact_no}}
+            {{edit_enquiry_form.guardians_contact_no}}
          </div>
       </div>
 
-      <div class="bg-white p-4 rounded-md shadow">                  
+      <div class="bg-white p-4 rounded-md shadow">
 
          <!-- ? Educational Qualifications -->
          <div>
             <label for="educational_qualifications" class="block mt-2 mb-2 text-base font-medium text-gray-900">
                Educational Qualifications
             </label>
-            {{add_enquiry_form.educational_qualifications}}
+            {{edit_enquiry_form.educational_qualifications}}
          </div>
 
          <!-- ? Educational Others -->
@@ -108,16 +108,16 @@ Add Enquiry | Aptech DB
             <label for="educational_qualifications" class="block mt-2 mb-2 text-md font-medium text-gray-900">
                (Others) please specify:
             </label>
-            {{add_enquiry_form.eductional_others}}
+            {{edit_enquiry_form.eductional_others}}
          </div>
-         
-         
+
+
          <!-- ? How you heard list -->
          <div>
             <label for="educational_qualifications" class="block mt-2 mb-2 text-base font-medium text-gray-900">
                How did you hear about Aptech Computer Education ?
             </label>
-            {{add_enquiry_form.how_you_heard}}
+            {{edit_enquiry_form.how_you_heard}}
          </div>
 
          <!-- ? How you heard others -->
@@ -125,7 +125,7 @@ Add Enquiry | Aptech DB
             <label for="educational_qualifications" class="block mt-2 mb-2 text-md font-medium text-gray-900">
                (Others) please specify:
             </label>
-            {{add_enquiry_form.how_you_heard_others}}
+            {{edit_enquiry_form.how_you_heard_others}}
          </div>
 
          <!-- ? Course of Interest list -->
@@ -133,17 +133,17 @@ Add Enquiry | Aptech DB
             <label for="educational_qualifications" class="block mt-2 mb-2 text-base font-medium text-gray-900">
                Course of Interest
             </label>
-            {{add_enquiry_form.course_of_interest}}
+            {{edit_enquiry_form.course_of_interest}}
          </div>
-         
+
          <!-- ? Course of Interest others -->
          <div>
             <label for="educational_qualifications" class="block mt-2 mb-2 text-md font-medium text-gray-900">
                (Others) please specify:
             </label>
-            {{add_enquiry_form.course_of_interest_others}}
+            {{edit_enquiry_form.course_of_interest_others}}
          </div>
-         
+
 
          <h4 class="text-aptechRed font-medium mt-4">For Counselor's only</h4>
 
@@ -152,7 +152,7 @@ Add Enquiry | Aptech DB
             <label for="educational_qualifications" class="block mt-2 mb-2 text-md font-medium text-gray-900">
                Counselor:
             </label>
-            {{add_enquiry_form.counselor}}
+            {{edit_enquiry_form.counselor}}
          </div>
 
          <!-- ? Remark -->
@@ -160,7 +160,7 @@ Add Enquiry | Aptech DB
             <label for="educational_qualifications" class="block mt-2 mb-2 text-md font-medium text-gray-900">
                Remark:
             </label>
-            {{add_enquiry_form.remark}}
+            {{edit_enquiry_form.remark}}
          </div>
 
          <!-- ? Date -->
@@ -168,7 +168,7 @@ Add Enquiry | Aptech DB
             <label for="educational_qualifications" class="block mt-2 mb-2 text-md font-medium text-gray-900">
                Date:
             </label>
-            {{add_enquiry_form.date}}
+            {{edit_enquiry_form.date}}
          </div>
 
       </div>
@@ -176,17 +176,18 @@ Add Enquiry | Aptech DB
 
    <div class="flex justify-center mt-10">
       <button type="submit"
-         class="text-sm flex items-center font-jost px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-darkBlue rounded hover:bg-gray-800 focus:outline-none focus:bg-gray-600">
-
+         class="cursor-pointer text-sm font-semibold flex items-center font-jost px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-green-700 rounded hover:bg-opacity-75 focus:outline-none focus:bg-green-600">
+   
          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
             <path fill-rule="evenodd"
-               d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z"
+               d="M10.5 3.75a6 6 0 00-5.98 6.496A5.25 5.25 0 006.75 20.25H18a4.5 4.5 0 002.206-8.423 3.75 3.75 0 00-4.133-4.303A6.001 6.001 0 0010.5 3.75zm2.03 5.47a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l1.72-1.72v4.94a.75.75 0 001.5 0v-4.94l1.72 1.72a.75.75 0 101.06-1.06l-3-3z"
                clip-rule="evenodd" />
          </svg>
-
-         <span class="ml-2">Add Enquiry</span>
+   
+         <span class="ml-2">Update Enquiry</span>
       </button>
    </div>
 </form>
-<br>
+
+
 {% endblock content %}

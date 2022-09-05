@@ -6,59 +6,222 @@ Search Results | Aptech DB
 {% endblock title %}
 
 {% block content %}
-<div class="p-3 rounded-lg  bg-darkBlue text-white sticky top-0">
+<div class="p-3 rounded-lg bg-darkBlue text-white sticky top-0">
    <h1 class="text-lg font-medium">Search Results</h1>
 </div>
 
-<div class="mt-5 border-b-2 w-11/12 ml-3 border-darkBlue">
-   <h1 class="text-xl">Courses</h1>
+
+{% if not search_courses and not search_students and not search_staffs %}
+   
+<div class="p-6 text-center bg-white shadow mt-10 w-5/6 mx-auto">
+   <svg aria-hidden="true" class="mx-auto mb-4 w-12 h-12 text-yellow-500" fill="none" stroke="currentColor"
+      viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+         d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+   </svg>
+   <h3 class="text-lg font-medium text-gray-500 ">
+      No items matched your search 
+   </h3>
 </div>
 
-<div class="grid grid-cols-3 gap-4 p-3">
+{% endif %}
 
-   <div class="course-card max-w-sm px-4 py-3 mx-auto bg-white rounded-md shadow-md mt-3">
+<!-- ? Search Courses -->
+{% if search_courses %}
 
-      <div>
-         <h1 class="mt-2 text-lg font-semibold text-gray-800">AP® Psychology - Course 5: Health and
-            Behavior</h1>
+<div class="mt-5 border-b-2 w-11/12 ml-3 border-darkBlue">
+   <h1 class="text-xl font-medium">Courses</h1>
+</div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-3">
+
+   {% for course in search_courses %}
+
+   <div class="course-card h-fit w-full px-4 py-3 mx-auto bg-white rounded-md shadow-md mt-3">
+
+      <div class="w-full">
+         <a href="{% url 'course_detail' course.id %}" class="w-5 h-5 text-aptechRed float-right">
+            <svg xmlns="http://www.w3.org/2000/svg" class="ionicon"
+               viewBox="0 0 512 512">
+               <title>Open</title>
+               <path
+                  d="M224 304a16 16 0 01-11.31-27.31l157.94-157.94A55.7 55.7 0 00344 112H104a56.06 56.06 0 00-56 56v240a56.06 56.06 0 0056 56h240a56.06 56.06 0 0056-56V168a55.7 55.7 0 00-6.75-26.63L235.31 299.31A15.92 15.92 0 01224 304z" />
+               <path
+                  d="M448 48H336a16 16 0 000 32h73.37l-38.74 38.75a56.35 56.35 0 0122.62 22.62L432 102.63V176a16 16 0 0032 0V64a16 16 0 00-16-16z" />
+            </svg>
+         </a>
+         <h1 class="mt-2 text-lg font-semibold text-gray-800">
+            {{course.name}}
+         </h1>
          <p class="mt-2 text-sm text-gray-600">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Odio eligendi similique exercitationem optio libero vitae accusamus cupiditate laborum eos.
+            {% if course.description %}
+               {{course.description|truncatewords:25}}
+            {% else %}
+               Nil
+            {% endif %}
          </p>
       </div>
 
       <div class="flex items-center justify-between mt-4">
-         <span class="text-lg font-bold text-aptechRed">₦400</span>
-         <span class="px-3 py-1 font-medium font-jost text-xs text-white uppercase bg-darkBlue rounded-full">3
-            months</span>
+         <span class="text-lg font-bold text-aptechRed">₦ {{course.price|intcomma}}</span>
+         <span class="px-3 py-1 font-medium font-jost text-xs text-white uppercase bg-darkBlue rounded-full">
+            {{course.duration}}
+         </span>
       </div>
 
    </div>
 
+   {% endfor %}
+
 </div>
 
+{% endif %}
+
+<!-- ? Search Students -->
+{% if search_students %}
+   
 <div class="mt-10 border-b-2 w-11/12 ml-3 border-darkBlue">
-   <h1 class="text-xl">Students</h1>
+   <h1 class="text-xl font-medium">Students</h1>
 </div>
 
-<div class="grid grid-cols-3 gap-4 p-3">
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-3">
 
-   <div class="max-w-md px-3 py-4 mx-auto mt-12 bg-white rounded-lg shadow">
+   {% for student in search_students %}
+         
+   <div class="w-full px-3 py-4 mx-auto mt-12 bg-white rounded-lg shadow-md h-fit">
       <div class="flex justify-end -mt-12">
-         <img class="object-cover w-16 h-16 border-2 border-aptechRed rounded-full" alt="avatar"
-            src="https://images.unsplash.com/photo-1499714608240-22fc6ad53fb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=76&q=80">
+         <img 
+            class="object-cover w-16 h-16 border-2 border-aptechRed rounded-full" 
+            alt="avatar"
+            {% if student.gender == 'Male' %}               
+               src="{% static 'img/male-avatar.png' %}" 
+            {% elif student.gender == 'Female' %}
+               src="{% static 'img/female_avatar.png' %}" 
+            {% else %}
+               src="{% static 'img/user-placeholder.jpg' %}" 
+            {% endif %}   
+         >
       </div>
 
-      <a href="" class="mt-2 text-xl font-medium text-gray-800 hover:text-aptechRed md:mt-0 font-jost">
-         Student Name
+      <a href="{% url 'student_detail' student.slug %}" class="mt-2 text-xl font-medium text-gray-800 hover:text-aptechRed md:mt-0 font-jost">
+         {{student.last_name}} {{student.first_name}} {{student.middle_name}}
       </a>
+      
+      <h1 class="mt-3 font-medium text-gray-600 dark:text-white">
+         Student ID:
+         <span class="text-md">
+            {% if student.studentId %}
+            {{student.studentId}}
+            {% else %}
+            Not assigned yet
+            {% endif %}
+         </span>
+      </h1>
 
-      <p class="mt-2 text-gray-600 text-md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-         dolores deserunt ea doloremque natus error, rerum quas odio quaerat nam ex commodi hic, suscipit in a veritatis
-         pariatur minus consequuntur!</p>
+      <h1 class="mt-2 font-medium text-gray-600 dark:text-white">
+         Email:
+         <span class="text-md">
+            {% if student.email %}
+               {{student.email}}
+            {% else %}
+               Nil
+            {% endif %}
+         </span>
+      </h1>
+
+      <h1 class="mt-2 font-medium text-gray-600 dark:text-white">
+         Contact No:
+         <span class="text-md">
+            {% if student.contact_no %}
+               {{student.contact_no}}
+            {% else %}
+               Nil
+            {% endif %}
+         </span>
+      </h1>
+
+      <h1 class="mt-2 font-medium text-gray-600 dark:text-white">
+         Home Address:
+         <span class="text-md">
+            {% if student.address %}
+               {{student.address}}
+            {% else %}
+               Nil
+            {% endif %}
+         </span>
+      </h1>      
+
+      <h1 class="mt-2 text-md font-medium text-gray-600 dark:text-white">
+         Enrolled:
+         <span class="">
+            {% if student.date_enrolled %}
+               {{student.date_enrolled}}
+            {% else %}
+               Nil
+            {% endif %}
+         </span>
+      </h1>
+
+      <div class="flex justify-end mt-3">
+         <a href="{% url 'student_detail' student.slug %}"
+            class="bg-red-100 flex items-center hover:bg-red-200 text-red-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 mr-1">
+               <path fill-rule="evenodd"
+                  d="M4.25 5.5a.75.75 0 00-.75.75v8.5c0 .414.336.75.75.75h8.5a.75.75 0 00.75-.75v-4a.75.75 0 011.5 0v4A2.25 2.25 0 0112.75 17h-8.5A2.25 2.25 0 012 14.75v-8.5A2.25 2.25 0 014.25 4h5a.75.75 0 010 1.5h-5z"
+                  clip-rule="evenodd" />
+               <path fill-rule="evenodd"
+                  d="M6.194 12.753a.75.75 0 001.06.053L16.5 4.44v2.81a.75.75 0 001.5 0v-4.5a.75.75 0 00-.75-.75h-4.5a.75.75 0 000 1.5h2.553l-9.056 8.194a.75.75 0 00-.053 1.06z"
+                  clip-rule="evenodd" />
+            </svg>
+
+            Full details            
+         </a>
+      </div>
    </div>
+
+   {% endfor %}
 
 </div>
 
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endif %}
+
+<!-- ? Search Staffs -->
+{% if search_staffs %}
+   
+<div class="mt-10 border-b-2 w-11/12 ml-3 border-darkBlue">
+   <h1 class="text-xl font-medium">Staffs</h1>
+</div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 p-3">
+
+   {% for staff in search_staffs %}
+         
+      <div class="text-center text-gray-500 mt-5 bg-white shadow p-4 rounded-md">
+         <img 
+            class="mx-auto mb-4 w-24 h-24 rounded-full" 
+            src="{% static 'img/default_avatar.png' %}" 
+            alt="Staff Avatar"
+         >
+            <h3 class="mb-1 text-xl font-medium text-gray-900 hover:text-aptechRed">
+               <a href="{% url 'staff_detail' staff.slug %}" class="font-jost ">
+                  {{staff.name}}
+               </a>
+            </h3>
+            <p class="text-gray-600 text-md">
+               {{staff.email}}
+            </p>
+            <p class="text-gray-600 text-md">
+               {{staff.role}}
+            </p>
+      </div>
+
+   {% endfor %}
+
+</div>
+
+{% endif %}
+
+<!-- ? Search Enquiries -->
+
+<br><br><br>
 {% endblock content %}

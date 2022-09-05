@@ -9,6 +9,7 @@ from .forms import EditStaffForm
 def staffs(request):
 
    all_staffs = models.Staff.objects.all()
+   staff_count =  all_staffs.count()
    if request.method == 'POST':
       staff_name = request.POST['staff_name']
       contact_no = request.POST['contact_no']
@@ -30,7 +31,8 @@ def staffs(request):
          messages.success(request, 'New Staff Added!')
          return redirect(request.META.get('HTTP_REFERER'))
    context = {
-      'all_staffs': all_staffs,      
+      'all_staffs': all_staffs,  
+      'staff_count': staff_count
    }
    return render(request, 'staff/staffs.html', context)
 

@@ -8,6 +8,7 @@ from .forms import EditCourseForm
 @login_required
 def courses(request):
    all_courses = models.Courses.objects.all()
+   courses_count = all_courses.count()
 
    if request.method == 'POST':
       course_name = request.POST['course_name']
@@ -29,7 +30,8 @@ def courses(request):
          return redirect(request.META.get('HTTP_REFERER'))
       
    context = {
-      'all_courses': all_courses
+      'all_courses': all_courses,
+      'courses_count': courses_count
    }
    return render(request, 'courses/courses.html', context)
 
