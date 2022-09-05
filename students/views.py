@@ -31,14 +31,18 @@ def student_detail(request, slug):
 
 @login_required
 def update_student(request, slug):
-   student = get_object_or_404(models.Student, slug=slug)
+   try:
+      student = models.Student.objects.get(slug=slug)
+   except models.Student.DoesNotExist:
+      messages.error(request, f"Student '{slug}' does not exist")
+      return redirect('students')
 
    if request.method == 'POST':
       edit_student_form = AddStudentForm(request.POST, instance=student)
       if edit_student_form.is_valid():
          edit_student_form.save()
          messages.success(request, 'Student Details Updated!')
-         return redirect('student_detail', slug=slug)
+         return redirect('students')
       else:
          messages.error(request, 'An error occured, please try again')
    else:
