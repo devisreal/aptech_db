@@ -14,7 +14,7 @@ Students | Aptech DB
 <div class="flex mt-3 justify-between items-center">
 
    <div>
-      <h1 class="text-lg font-medium shadow inline-flex items-center bg-white p-1 px-3 rounded-md">
+      <h1 class="text-base font-medium shadow inline-flex items-center bg-white p-1 px-3 rounded-md">
          <span class="text-aptechRed font-jost">
             Total Students:&nbsp;
          </span>
@@ -34,6 +34,18 @@ Students | Aptech DB
 </div>
 
 {% if all_students %}
+
+<div class="flex mt-5">
+   <button data-sort="enrolled-date:desc"
+      class="modal-button flex w-fit cursor-pointer text-sm items-center px-4 py-2 font-semibold border-2 text-white bg-darkBlue rounded-md">
+      <span class="mx-1">Newer</span>
+   </button>
+   <button data-sort="enrolled-date:asc"
+      class="modal-button flex w-fit cursor-pointer text-sm items-center px-4 py-2 font-semibold border-2 text-white bg-darkBlue rounded-md">
+      <span class="mx-1">Older</span>
+   </button>
+</div>
+
 <div class="overflow-hidden overflow-x-auto border rounded mt-5 shadow">
    <table class="min-w-full text-sm divide-y divide-gray-300 ">
       <thead>
@@ -48,10 +60,10 @@ Students | Aptech DB
          </tr>
       </thead>
 
-      <tbody class="divide-y divide-gray-100 bg-white ">
+      <tbody class="divide-y divide-gray-100 bg-white mix-container">
          {% for student in all_students %}
 
-         <tr class="font-semibold">
+         <tr class="font-semibold mix" data-enrolled-date="{{student.date_enrolled}}">
             <td class="px-0.5 py-2 text-gray-700 text-center whitespace-nowrap">
                {{forloop.counter}}
             </td>
@@ -114,7 +126,37 @@ Students | Aptech DB
 
 {% endif %}
 
-
-
-
 {% endblock content %}
+{% block scripts %}
+<script>
+   var containerEl = document.querySelector('.mix-container');
+
+   var mixer = mixitup(containerEl, {
+      animation: {
+         effects: 'fade scale stagger(50ms)' // Set a 'stagger' effect for the loading animation
+      },
+      load: {
+         filter: 'none', // Ensure all targets start from hidden (i.e. display: none;)
+         sort: 'enrolled-date:desc'
+      }
+   });
+
+   // Add a class to the container to remove 'visibility: hidden;' from targets. This
+   // prevents any flickr of content before the page's JavaScript has loaded.
+
+   containerEl.classList.add('mixitup-ready');
+
+   // Show all targets in the container
+
+   mixer.show()
+      .then(function () {
+         // Remove the stagger effect for any subsequent operations
+
+         mixer.configure({
+            animation: {
+               effects: 'fade scale'
+            }
+         });
+      });
+</script>
+{% endblock scripts %}
