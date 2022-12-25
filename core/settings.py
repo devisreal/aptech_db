@@ -178,5 +178,5 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 CRISPY_TEMPLATE_PACK = "tailwind"
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://aptech_db.up.railway.app'
+    'https://aptech-db.up.railway.app'
 ]
