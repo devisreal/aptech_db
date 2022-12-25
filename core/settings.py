@@ -11,7 +11,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-import django_heroku
 import dj_database_url
 from decouple import config, Csv
 from pathlib import Path
@@ -178,4 +177,6 @@ CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
 
 CRISPY_TEMPLATE_PACK = "tailwind"
 
-django_heroku.settings(locals())
+CSRF_TRUSTED_ORIGINS = [
+    'https://aptech_db.up.railway.app'
+]
