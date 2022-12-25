@@ -67,7 +67,7 @@ Courses | Aptech DB
                <span class="font-bold">₦</span> {{course.price|intcomma}}
             </td>
             <td class="px-2 py-2 text-gray-700 text-center whitespace-nowrap float-right">
-               <label for="delete-modal" class=" modal-button">
+               <label for="delete-modal{{course.id}}" class=" modal-button">
                   <a class="text-red-600 hover:text-red-900 cursor-pointer">
                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-5 h-5">
@@ -81,11 +81,11 @@ Courses | Aptech DB
 
         
          <!-- * Delete confirmation modal -->
-         <input type="checkbox" id="delete-modal" class="modal-toggle" />
-         <label for="delete-modal" class="modal ">
+         <input type="checkbox" id="delete-modal{{course.id}}" class="modal-toggle" />
+         <label for="delete-modal{{course.id}}" class="modal ">
             <label class="modal-box md:w-4/12 max-w-5xl rounded-md p-0 relative" for="">
                <div class="relative bg-white rounded-lg shadow">
-                  <label for="delete-modal"
+                  <label for="delete-modal{{course.id}}"
                      class="absolute cursor-pointer top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center"
                      data-modal-toggle="popup-modal">
                      <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
